@@ -5,5 +5,8 @@
 <% @reviews.each do |review| %>
   <p>クチコミ:<%= review.content %></p>
   <%= link_to '詳細画面', review_path(review.id) %>
+  <p><%= link_to '編集する', edit_review_path(review.id)%></p>
+  <p><%= link_to '削除する', review_path(review.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></p><br>
+
 <% end %>
 <br>

@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def index
     @reviews = Review.all
@@ -18,9 +19,20 @@ class ReviewsController < ApplicationController
   end
 
   def show
-set_review
   end
 
+  def edit
+  end
+
+  def update
+    @review.update(review_params)
+    redirect_to reviews_path, notice: "編集しました"
+  end
+
+  def destroy
+    @review.destroy
+    redirect_to reviews_path, notice: "削除しました"
+  end
 
   private
   def review_params
