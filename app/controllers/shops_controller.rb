@@ -4,12 +4,4 @@ class ShopsController < ApplicationController
     @shops = Shop.all
   end
 
-  def new
-    @shop = Shop.new
-  end
-
- def create
-
- end
-
 end
