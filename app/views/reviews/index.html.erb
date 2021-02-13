@@ -1,0 +1,13 @@
+<h1>クチコミ一覧</h1>
+
+<%= link_to 'クチコミする', new_review_path, class: 'btn btn-default' %>
+
+<% @reviews.each do |review| %>
+  <p>クチコミ:<%= review.content %></p>
+    <p>投稿時間:<%= review.created_at %></p>
+  <%= link_to '詳細画面', review_path(review.id) %>
+  <p><%= link_to '編集する', edit_review_path(review.id)%></p>
+  <p><%= link_to '削除する', review_path(review.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></p><br>
+
+<% end %>
+<br>
