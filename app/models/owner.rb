@@ -9,5 +9,4 @@ class Owner < ApplicationRecord
   validates :company, presence: true
   validates :tel, presence: true, format: { with: VALID_TEL_REGEX }
   validates :postcode, presence: true, format: { with: VALID_POSTCODE_REGEX }
-
 end

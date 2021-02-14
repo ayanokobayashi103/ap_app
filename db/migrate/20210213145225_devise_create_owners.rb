@@ -34,8 +34,8 @@ class DeviseCreateOwners < ActiveRecord::Migration[5.2]
 
       t.string :name, null: false
       t.string :company, null: false
-      t.integer :tel, null: false
-      t.integer :postcode, null: false
+      t.string :tel, null: false
+      t.string :postcode, null: false
       t.timestamps null: false
     end
 

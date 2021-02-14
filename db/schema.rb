@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2021_02_13_145225) do
     t.inet "last_sign_in_ip"
     t.string "name", null: false
     t.string "company", null: false
-    t.integer "tel", null: false
-    t.integer "postcode", null: false
+    t.string "tel", null: false
+    t.string "postcode", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_owners_on_email", unique: true

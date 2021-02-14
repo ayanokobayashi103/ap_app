@@ -5,12 +5,13 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # userカラム追記
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    added_attrs = [ :name, :company, :tel, :postcode ]
+        devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+        devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
   # ログイン後のリダイレクト先
-  def after_sign_in_path_for(resource)
-    user_path(resource.id)
-  end
+  # def after_sign_in_path_for(resource)
+  #   user_path(resource.id)
+  # end
 
 end

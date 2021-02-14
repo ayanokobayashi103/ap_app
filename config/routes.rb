@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  
-  get 'users/show'
+
+  #get 'users/show'
   resources :users, only: [:show]
   resources :shops
   root 'shops#index'
