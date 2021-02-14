@@ -1,2 +1,8 @@
 <h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+<% @shops.each do |shop| %>
+  <p>投稿者:<%= shop.user.name%></p>
+  <p><%= shop.created_at.to_s(:datetime) %></p><br>
+  <p>タイトル<br><%= link_to shop.brand, shop_path(shop.id) %></p><br>
+  <p>内容<br><%= shop.detail %></p><br>
+<% end %>
+<%= link_to '店舗を登録する', new_shop_path %>

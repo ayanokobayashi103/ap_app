@@ -18,6 +18,16 @@
   </div>
 
   <div class="field">
+    <%= form.label :start_dt %><br>
+    <%= form.text_field :start_dt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_dt %><br>
+    <%= form.text_field :end_dt %>
+  </div>
+
+  <div class="field">
     <%= form.label :detail %><br>
     <%= form.text_area :detail %>
   </div>
@@ -36,3 +46,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to '店一覧へ', shops_path %>
