@@ -20,3 +20,9 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      shop:
+        name: 店舗名
+        brand: ブランド
+        address: 住所
+        detail: 詳細
+        contact_detail: 電話番号
