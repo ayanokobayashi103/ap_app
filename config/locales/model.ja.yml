@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      owner: 店主
+      user: ユーザー
+    attributes:
+      owner:
+        email: メールアドレス
+        name: 名前
+        tel: 電話番号
+        postcode: 郵便番号
+        company: 会社名
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      user:
+        title: タイトル
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
