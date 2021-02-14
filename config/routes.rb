@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  #get 'users/show'
   resources :users, only: [:show]
   resources :shops
   resources :owners
