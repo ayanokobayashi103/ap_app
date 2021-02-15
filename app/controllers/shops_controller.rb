@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
 
   def create
     @shop = Shop.new(shop_params)
+    @shop.owner_id = current_owner.id
     if @shop.save
       redirect_to shops_path, notice: '新規登録しました'
     else
@@ -32,7 +33,7 @@ class ShopsController < ApplicationController
 
   private
   def shop_params
-    params.require(:shop).permit(:name, :brand, :address, :start_dt, :end_dt, :datail, :url, :contact_detail)
+    params.require(:shop).permit(:name, :brand, :address, :start_dt, :end_dt, :detail, :url, :contact_detail)
   end
 
   def set_shop
