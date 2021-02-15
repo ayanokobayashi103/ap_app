@@ -5,4 +5,6 @@
   <p>タイトル<br><%= link_to shop.brand, shop_path(shop.id) %></p><br>
   <p>内容<br><%= shop.detail %></p><br>
 <% end %>
+<% if current_owner %>
 <%= link_to '店舗を登録する', new_shop_path %>
+<% end %>

@@ -1,6 +1,15 @@
 <h1>新規店舗登録</h1>
 
 <%= form_with(model: @shop, local: true) do |form| %>
+<% if @shop.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @shop.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= form.label :name %><br>

@@ -1,5 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update]
+  before_action :owner?, only: [:new, :ceate, :edit, :update]
+
   def index
     @shops = Shop.all
   end
@@ -37,4 +39,9 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
+  def owner?
+    unless current_owner
+      redirect_to shops_path, notice: "エラー"
+    end
+  end
 end
