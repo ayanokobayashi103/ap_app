@@ -1,4 +1,4 @@
 class OwnersController < ApplicationController
-  def index
+  def shop
   end
 end
