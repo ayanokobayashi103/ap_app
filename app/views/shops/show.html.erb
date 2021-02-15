@@ -6,5 +6,5 @@
 <p>詳細:<%= @shop.detail %></p>
 <p>電話番号:<%= @shop.contact_detail %></p>
 
-<%= link_to '一覧へ', shops_path %>
-<%= link_to 'クチコミ', reviews_path %>
+<%= link_to '一覧へ', shops_path %><br>
+<%= link_to 'クチコミ', new_shop_review_path(shop_id: @shop.id) %>

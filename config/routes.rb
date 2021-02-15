@@ -10,16 +10,19 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  root 'shops#index'
 
   resources :users, only: [:show]
-  resources :shops
+  resources :shops do
+    resources :reviews
+  end
+
   resources :owners do
   collection do
       get 'shop'
     end
   end
-  root 'shops#index'
-  resources :reviews
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

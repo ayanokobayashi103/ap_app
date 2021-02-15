@@ -4,4 +4,5 @@ class Shop < ApplicationRecord
   validates :start_dt, presence: true
   validates :end_dt, presence: true
   belongs_to :owner
+  has_many :reviews, dependent: :destroy
 end
