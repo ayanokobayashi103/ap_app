@@ -1,11 +1,9 @@
 <h1>Shops#index</h1>
 <% @shops.each do |shop| %>
-  <p>店舗名:<%= shop.name%></p>
+  <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
   <p><%= shop.created_at.to_s(:datetime) %></p><br>
   <p>営業時間:<%= shop.start_dt%></p>
   <p>閉店時間:<%= shop.end_dt%></p>
-  <!-- <p>タイトル<br><%= link_to shop.brand, shop_path(shop.id) %></p><br>
-  <p>内容<br><%= shop.detail %></p><br> -->
 <% end %>
 <% if current_owner %>
 <%= link_to '店舗を登録する', new_shop_path %><br>

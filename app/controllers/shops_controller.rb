@@ -41,7 +41,7 @@ class ShopsController < ApplicationController
   end
 
   def owner?
-    unless current_owner
+    unless authenticate_owner!
       redirect_to shops_path, notice: "エラー"
     end
   end
