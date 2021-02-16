@@ -4,7 +4,11 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+    @reviews = Review.select??
+      
     @shop = Shop.find(params[:shop_id])
+    # @user = Review.pluck(:user_id)
+    # @user = User.where(id: @user)
   end
 
   def new
@@ -13,7 +17,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-      binding.irb
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.shop_id = params[:shop_id]

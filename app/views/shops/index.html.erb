@@ -1,7 +1,7 @@
 <h1>Shops#index</h1>
 <% @shops.each do |shop| %>
   <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
-  <p><%= shop.created_at.to_s(:datetime) %></p><br>
+  <p><%= shop.address %></p>
   <p>営業時間:<%= shop.start_dt%></p>
   <p>閉店時間:<%= shop.end_dt%></p>
 <% end %>
