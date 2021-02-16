@@ -7,10 +7,10 @@
 <p>クチコミ:<%= review.content %></p>
 <p>投稿時間:<%= review.created_at %></p>
 <p><%= link_to '詳細表示', shop_review_path(@shop.id,review.id) %></p>
-<% if user_signed_in? %>
-  <% if current_user.id == review.user.id%>
-    <p><%= link_to '編集する', edit_shop_review_path(@shop.id,review.id)%></p>
-    <p><%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></p><br>
+  <% if user_signed_in? %>
+    <% if current_user.id == review.user.id%>
+      <p><%= link_to '編集する', edit_shop_review_path(@shop.id,review.id)%></p>
+      <p><%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></p><br>
+    <% end %>
   <% end %>
-<% end %>
 <% end %>
