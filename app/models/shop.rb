@@ -5,4 +5,5 @@ class Shop < ApplicationRecord
   validates :end_dt, presence: true
   belongs_to :owner
   has_many :reviews, dependent: :destroy
+  has_many :review_users, throgh: :reviews, souce: :user
 end
