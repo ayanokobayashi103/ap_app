@@ -1,6 +1,16 @@
 <h1>新規クチコミ投稿</h1>
 
-<%= form_with(model: @review, local: true) do |form| %>
+<%= form_with(model: @review, url: shop_reviews_path, local: true) do |form| %>
+
+<% if @review.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="field">
     <%= form.label :content %><br>

@@ -1,4 +1,8 @@
 class OwnersController < ApplicationController
-  def index
+  before_action :authenticate_owner!
+
+  def shop
+    @shops = Shop.select(:id,:name,:address)
   end
+
 end

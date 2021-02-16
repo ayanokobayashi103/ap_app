@@ -1,4 +1,6 @@
 <h1>詳細画面</h1>
+<p>投稿者: <%= @review.user.name %></p>
 <p>内容: <%= @review.content %></p>
 
-<%= link_to '一覧へ', reviews_path %>
+
+<%= link_to 'クチコミ一覧へ', shop_reviews_path %>

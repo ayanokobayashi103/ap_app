@@ -1,0 +1,59 @@
+<h1>新規店舗登録</h1>
+
+<%= form_with(model: @shop, local: true) do |form| %>
+<% if @shop.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @shop.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %><br>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %><br>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_dt %><br>
+    <%= form.text_field :start_dt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_dt %><br>
+    <%= form.text_field :end_dt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail %><br>
+    <%= form.text_area :detail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %><br>
+    <%= form.text_area :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_detail %><br>
+    <%= form.text_field :contact_detail %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to '店一覧へ', shops_path %>

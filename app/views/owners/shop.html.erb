@@ -1,0 +1,19 @@
+<h1>登録した店舗一覧</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>店舗名</th>
+      <th>住所</th>
+    </tr>
+  </thead>
+  <% @shops.each do |shop| %>
+    <tr>
+      <td><%= shop.name %></td>
+      <td><%= shop.address %></td>
+      <td>
+        <%= link_to '詳細', shop_path(shop.id), class: 'show-user' %>
+        <%= link_to '編集', edit_shop_path(shop.id), class: 'edit-user' %>
+      </td>
+    </tr>
+  <% end %>
+</table>
