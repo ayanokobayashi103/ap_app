@@ -4,11 +4,7 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
-    @reviews = Review.select??
-      
     @shop = Shop.find(params[:shop_id])
-    # @user = Review.pluck(:user_id)
-    # @user = User.where(id: @user)
   end
 
   def new
