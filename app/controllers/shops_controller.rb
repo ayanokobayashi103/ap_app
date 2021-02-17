@@ -3,7 +3,9 @@ class ShopsController < ApplicationController
   before_action :owner?, only: [:new, :ceate, :edit, :update]
 
   def index
-    @shops = Shop.all
+    # @shops = Shop.all
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true)
   end
 
   def new

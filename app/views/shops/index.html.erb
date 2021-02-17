@@ -1,4 +1,11 @@
 <h1>Shops#index</h1>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :店舗検索 %><br>
+  <%= f.search_field :name_or_brand_or_address_cont, class: "form-control", placeholder: "店舗名 ブランド 住所" %>
+  <%= f.submit %>
+<% end %>
+
 <% @shops.each do |shop| %>
   <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
   <p><%= shop.address %></p>
