@@ -8,7 +8,7 @@
   <% unless current_user.id == review.user.id %>
     <%= render 'users/follow_form', user: review.user %>
   <% end %>
-</p>s
+</p>
 <p>クチコミ:<%= review.content %></p>
 <p>投稿時間:<%= l review.created_at, format: :long %></p>
 <p><%= link_to '詳細表示', shop_review_path(@shop.id,review.id) %></p>
