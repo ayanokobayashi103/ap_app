@@ -14,3 +14,23 @@
  *= require_tree .
  *= require_self
  */
+
+ .navbar-dark {
+   background-color: #ED6044;
+ }
+ body{
+   background: #F8F8FA;
+   text-align:center;
+ }
+ /* background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
+/* background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%); */
+
+.card.auth-card {
+  background: #fff;
+  width: 440px;
+  max-width: 100%;
+  padding: 20px;
+  margin: 10px;
+text-align:center;
+padding: 40px 60px;
+}
