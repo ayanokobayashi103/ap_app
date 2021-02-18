@@ -16,21 +16,44 @@
  */
 
  .navbar-dark {
-   background-color: #ED6044;
+   background-color: black;
+   /* background-color: #ED6044; */
  }
  body{
-   background: #F8F8FA;
+   background: #FCF9F0;
    text-align:center;
  }
- /* background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
-/* background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%); */
-
-.card.auth-card {
-  background: #fff;
-  width: 440px;
-  max-width: 100%;
-  padding: 20px;
-  margin: 10px;
-text-align:center;
-padding: 40px 60px;
+/* 新規登録画面 */
+ .card.auth-card {
+   background: #fff;
+   width: 440px;
+   max-width: 100%;
+   padding: 20px;
+   margin: 10px auto;
+   text-align:center;
+   padding: 40px 60px;
+ }
+ .btn-info {
+   margin-top: 20px;
+ }
+ .row {
+   margin: auto;
+ }
+ .btn-block {
+   display: block;
+ }
+/* クチコミ一覧 */
+ .shop-index-top {
+   background-image: url("jordan-nix-4Hmj9gkyM6c-unsplash.jpg");
+   background-size: cover;
+ }
+ #top {
+   height: 400px;
+ }
+ /* notice */
+.alart {
+  background: #F8E07C;
+}
+.notice {
+  background: #F8E07C;
 }
