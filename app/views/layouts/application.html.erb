@@ -19,9 +19,12 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <!-- この下の行に mr-auto クラスを付与するだけ -->
+      <% if current_owner %>
       <ul class="navbar-nav mr-auto">　
-
+        <li><%= link_to '店舗を登録する', new_shop_path, class:"nav-link" %></li>
+        <li><%= link_to '登録した店舗一覧へ', shop_owners_path, class:"nav-link" %></li>
       </ul>
+      <% end %>
 
       <ul class="navbar-nav">
         <% unless current_owner %>
