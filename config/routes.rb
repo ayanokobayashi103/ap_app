@@ -16,11 +16,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :owners do
-  collection do
-      get 'shop'
-    end
-  end
+  resources :owners 
   resources :relationships, only: [:create, :destroy]
 
   if Rails.env.development?
