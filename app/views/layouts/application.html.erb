@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
@@ -27,6 +28,7 @@
           <% end %>
 
           <ul class="navbar-nav">
+            <a><%= link_to "ホーム", shops_path, class:"nav-link" %></a>
             <% unless current_owner %>
               <% if user_signed_in? %>
               <li>
@@ -63,7 +65,6 @@
         </div>
       </div>
     </nav>
-
     <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>

@@ -7,14 +7,9 @@ class UsersController < ApplicationController
 
   def show
     user_params
-    # if current_user.id != @user.id
-      # redirect_to shops_path, notice: "エラー"
-    # else
       @user = User.find(params[:id])
       @followers = @user.followers
       @following = @user.following
-    # end
-
   end
 
   private

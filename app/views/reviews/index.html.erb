@@ -4,13 +4,7 @@
 <% end %>
 
 <% @shop.reviews.each do |review| %>
-<p>投稿者:<%= review.user.name %>
-  <% if user_signed_in? %>
-  <% unless current_user.id == review.user.id %>
-    <%= render 'users/follow_form', user: review.user %>
-  <% end %>
-  <% end %>
-</p>
+<p>投稿者:<%= review.user.name %></p>
 <p>クチコミ:<%= review.content %></p>
 <p>投稿時間:<%= l review.created_at, format: :long %></p>
 <p><%= link_to '詳細表示', shop_review_path(@shop.id,review.id) %></p>
