@@ -42,7 +42,16 @@
  .btn-block {
    display: block;
  }
-/* review_index */
+ .card.owner-card {
+   background: #fff;
+   width: 600px;
+   max-width: 100%;
+   padding: 20px;
+   margin: 10px auto;
+   text-align:center;
+   padding: 40px 60px;
+ }
+/* shop_index */
  .shop-index-top {
    background-image: url("jordan-nix-4Hmj9gkyM6c-unsplash.jpg");
    background-size: cover;
