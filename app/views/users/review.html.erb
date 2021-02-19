@@ -1,0 +1,10 @@
+<h2>ユーザー</h2>
+<% if current_user.id == @user.id %>
+  <div class="container">
+  <% @user.reviews.each do |review| %><p>
+    <div class="card">
+      <%= review.shop.name %>:<%= review.content %>
+    </div>  
+    <% end %>
+  </div>
+<% end %>

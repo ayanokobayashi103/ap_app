@@ -5,7 +5,7 @@
 
 <h4>フォローしてるひと</h4>
 <% @following.each do |following|%>
-  <p>Name: <%= following.name %>, Email: <%= following.email %></p>
+  <p>Name: <%= link_to following.name, user_path(following.id) %></p>
 <% end %>
 
 <h4>フォローされてるひと</h4>
@@ -13,4 +13,4 @@
   <p>Name: <%= followers.name %>, Email: <%= followers.email %></p>
 <% end %>
 
-<%= link_to 'ユーザーの一覧', users_path %>
+<%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id) %>

@@ -10,13 +10,13 @@
   </div>
 </section>
 
-<div class = "container-fluid">
-  <% @shops.each do |shop| %>
+<div class = "container">
+  <% @shops.each do |shop| %><p>
   <div class = "card">
     <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
     <p><%= shop.address %></p>
     <p>営業時間:<%= shop.start_dt%></p>
     <p>閉店時間:<%= shop.end_dt%></p>
-  </div></p>
+  </div>
   <% end %>
 </div>

@@ -3,6 +3,9 @@ class OwnersController < ApplicationController
 
   def show
     shop_params
+    if current_owner.id != @owner.id
+      redirect_to root_path, notice: "エラー"
+    end
   end
 
   private
