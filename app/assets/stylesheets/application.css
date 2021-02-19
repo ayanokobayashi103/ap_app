@@ -38,6 +38,7 @@
  }
  .row {
    margin: auto;
+   display: block;
  }
  .btn-block {
    display: block;
@@ -81,4 +82,8 @@
 }
 .notice {
   background: gold;
+}
+
+#new_shop_card {
+  padding: 40px;
 }

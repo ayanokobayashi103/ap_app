@@ -1,10 +1,10 @@
-<h2>ユーザー</h2>
+<h2><%="#{current_user.name}さんのクチコミ履歴"%></h2>
 <% if current_user.id == @user.id %>
   <div class="container">
   <% @user.reviews.each do |review| %><p>
     <div class="card">
-      <%= review.shop.name %>:<%= review.content %>
-    </div>  
+      <%= link_to review.shop.name, shop_path(review.shop.id) %>:<%= review.content %>
+    </div>
     <% end %>
   </div>
 <% end %>

@@ -10,7 +10,8 @@
 
 <h4>フォローされてるひと</h4>
 <% @followers.each do |followers|%>
-  <p>Name: <%= followers.name %>, Email: <%= followers.email %></p>
+  <p>Name: <%= followers.name %></p>
 <% end %>
-
+<% if current_user.id == @user.id %>
 <%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id) %>
+<% end %>
