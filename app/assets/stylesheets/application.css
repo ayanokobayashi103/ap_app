@@ -10,6 +10,80 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
  */
+
+ .navbar-dark {
+   background-color: black;
+   /* background-color: #ED6044; */
+ }
+ body{
+   background: #F8F8FA;
+   text-align:center;
+ }
+/* sign_in */
+ .card.auth-card {
+   background: #fff;
+   width: 440px;
+   max-width: 100%;
+   padding: 20px;
+   margin: 10px auto;
+   text-align:center;
+   padding: 40px 60px;
+ }
+ .btn-info {
+   margin-top: 20px;
+ }
+ .row {
+   margin: auto;
+   display: block;
+ }
+ .btn-block {
+   display: block;
+ }
+ .card.owner-card {
+   background: #fff;
+   width: 600px;
+   max-width: 100%;
+   padding: 20px;
+   margin: 10px auto;
+   text-align:center;
+   padding: 40px 60px;
+ }
+/* shop_index */
+ .shop-index-top {
+   background-image: url("jordan-nix-4Hmj9gkyM6c-unsplash.jpg");
+   background-size: cover;
+ }
+ #top {
+   height: 400px;
+ }
+ #index-search{
+   margin-top: 30px;
+ }
+ section {
+   padding: 60px 50px;
+ }
+ #find-shop {
+   font-family: 'HiraKakuPro-W6';
+ }
+ .shop_search {
+   margin: 50px;
+ }
+ .btn-danger {
+   margin-top: 20px;
+   padding: 5px 60px
+ }
+ /* notice */
+.alart {
+  background: red;
+}
+.notice {
+  background: gold;
+}
+
+#new_shop_card {
+  padding: 40px;
+}

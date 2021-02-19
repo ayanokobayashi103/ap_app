@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.shop_id = params[:shop_id]
     if @review.save
-      redirect_to shop_reviews_path, notice: '新規登録しました'
+      redirect_to shop_reviews_path, notice: 'クチコミ投稿しました！'
     else
       render :new
     end
@@ -28,16 +28,18 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @review.shop_id = params[:shop_id]
   end
 
   def update
     @review.update(review_params)
-    redirect_to reviews_path, notice: "編集しました"
+    redirect_to shop_reviews_path, notice: "クチコミを編集しました！"
   end
 
   def destroy
+    @shop = Shop.find(params[:shop_id])
     @review.destroy
-    redirect_to reviews_path, notice: "削除しました"
+    redirect_to shop_reviews_path, notice: "クチコミを削除しました！"
   end
 
   private

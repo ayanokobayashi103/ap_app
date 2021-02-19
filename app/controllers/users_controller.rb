@@ -1,21 +1,18 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_user!
 
-  def index
-    @users = User.all
+  def review
+    user_params
+    if current_user.id != @user.id
+      redirect_to user_path(user_params), notice: "エラー"
+    end
   end
 
   def show
     user_params
-    # if current_user.id != @user.id
-      # redirect_to shops_path, notice: "エラー"
-    # else
       @user = User.find(params[:id])
       @followers = @user.followers
       @following = @user.following
-    # end
-
   end
 
   private

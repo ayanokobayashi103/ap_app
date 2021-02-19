@@ -1,6 +1,10 @@
 <h1>詳細画面</h1>
 <p>投稿者: <%= @review.user.name %></p>
 <p>内容: <%= @review.content %></p>
-
+<% if user_signed_in? %>
+<% unless current_user.id == @review.user.id %>
+  <%= render 'users/follow_form', user: @review.user %>
+<% end %>
+<% end %>
 
 <%= link_to 'クチコミ一覧へ', shop_reviews_path %>

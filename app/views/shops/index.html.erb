@@ -1,18 +1,22 @@
-<h1>Shops#index</h1>
+<section id= "top" class="shop-index-top">
+  <h1 id="find-shop">お店を見つける</h1>
+  <div class = "container">
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :name_or_brand_or_address_cont, class: "form-control", placeholder: "店舗名 ブランド 住所" %>
+      <%= button_tag type: 'submit',class: "btn btn-danger" do %>
+        <i class="fas fa-search"></i> 検索
+      <% end %>
+    <% end %>
+  </div>
+</section>
 
-<%= search_form_for @q do |f| %>
-  <%= f.label :店舗検索 %><br>
-  <%= f.search_field :name_or_brand_or_address_cont, class: "form-control", placeholder: "店舗名 ブランド 住所" %>
-  <%= f.submit %>
-<% end %>
-
-<% @shops.each do |shop| %>
-  <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
-  <p><%= shop.address %></p>
-  <p>営業時間:<%= shop.start_dt%></p>
-  <p>閉店時間:<%= shop.end_dt%></p>
-<% end %>
-<% if current_owner %>
-<%= link_to '店舗を登録する', new_shop_path %><br>
-<%= link_to '登録した店舗一覧へ', shop_owners_path %>
-<% end %>
+<div class = "container">
+  <% @shops.each do |shop| %><p>
+  <div class = "card">
+    <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
+    <p><%= shop.address %></p>
+    <p>営業時間:<%= shop.start_dt%></p>
+    <p>閉店時間:<%= shop.end_dt%></p>
+  </div>
+  <% end %>
+</div>

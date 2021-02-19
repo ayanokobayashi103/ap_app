@@ -1,13 +1,3 @@
 <h1>クチコミ編集</h1>
 
-<%= form_with(model: @review, local: true) do |form| %>
-
-  <div class="field">
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render "form" %>

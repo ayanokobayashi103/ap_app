@@ -11,16 +11,17 @@ Rails.application.routes.draw do
   }
   root 'shops#index'
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show] do
+    collection do
+      get 'review'
+    end
+  end
+
   resources :shops do
     resources :reviews
   end
 
-  resources :owners do
-  collection do
-      get 'shop'
-    end
-  end
+  resources :owners
   resources :relationships, only: [:create, :destroy]
 
   if Rails.env.development?
