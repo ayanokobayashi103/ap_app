@@ -1,4 +1,4 @@
-<h1><%= @shop.name %>のクチコミ一覧 </h1>
+<h1><%= link_to @shop.name, shop_path(@shop)%>のクチコミ一覧 </h1>
 <% if current_user %>
   <%= link_to 'クチコミする', new_shop_review_path, class: 'btn btn-primary' %>
 <% end %>

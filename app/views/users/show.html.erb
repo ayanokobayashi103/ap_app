@@ -3,10 +3,9 @@
   <p>メールアドレス: <%= @user.email %></p>
 <% end %>
 
-<% if current_user.id == @user.id %>
 <%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id), class:"btn btn-primary" %>
-<% end %>
 
+<% if current_user.id == @user.id %>
 <p><div class="container">
   <div class="row">
     <div class="col-md-6" >
@@ -14,7 +13,7 @@
         <h4>フォロー中</h4>
         <% @following.each do |following|%>
         <% if current_user.id == @user.id %>
-        <p>Name: <%= link_to following.name, user_path(following.id) %></p>
+        <p>Name: <%= link_to following.name, review_users_path(id: following.id) %></p>
         <% else %>
         <p>Name: <%= following.name %></p>
         <% end %>
@@ -26,6 +25,7 @@
         <h4>フォロワー</h4>
         <% @followers.each do |followers|%>
         <p>Name: <%= followers.name %></p>
+        <% end %>
         <% end %>
       </div>
     </div>

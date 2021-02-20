@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
   # ログイン後のリダイレクト先
-  # def after_sign_in_path_for(resource)
-  #   user_path(resource.id)
-  # end
+  def after_sign_in_path_for(resource)
+    root_path
+  end
 
 end

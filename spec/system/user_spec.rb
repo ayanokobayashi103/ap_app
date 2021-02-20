@@ -18,23 +18,25 @@ RSpec.describe 'User', type: :system do
   end
 
   describe 'セッション機能のテスト' do
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with:'user@u.com'
+      fill_in 'user[password]', with:'userpass1'
+      click_button 'ログイン'
+    end
     context 'ログインができること' do
       it 'ログインページに遷移' do
-        visit new_user_session_path
-        fill_in 'user[email]', with:'user@u.com'
-        fill_in 'user[password]', with:'userpass1'
-        click_button 'ログイン'
         expect(page).to have_content 'ログインしました!'
       end
     end
-  end
     context '自分の詳細画面(マイページ)に飛べること' do
       it 'マイページが表示される' do
-        visit tasks_path
+        visit root_path
         click_link 'マイページ'
-        expect(page).to have_content 'user1のページ'
+        expect(page).to have_content 'user1さんのページ'
       end
     end
+
   #   context '他人の詳細画面に飛べないこと' do
   #     it '自分のタスク一覧に遷移する' do
   #       user2 = FactoryBot.create(:user2)
@@ -102,5 +104,5 @@ RSpec.describe 'User', type: :system do
   #       expect(page).to have_content '削除しました'
   #     end
     # end
-  # end
+  end
 end
