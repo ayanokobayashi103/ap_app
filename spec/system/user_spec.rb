@@ -5,7 +5,7 @@ RSpec.describe 'User', type: :system do
   end
   describe 'ユーザ登録のテスト' do
     context 'ユーザの新規登録ができること' do
-      it '作成したタスクが表示される' do
+      it 'noticeが表示される' do
         visit new_user_registration_path
         fill_in 'user[name]', with:'name'
         fill_in 'user[email]', with:'email@e.com'

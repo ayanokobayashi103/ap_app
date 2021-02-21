@@ -1,8 +1,9 @@
 <h1><%= "#{@user.name}" %>さんのページ</h1>
 <% if current_user.id == @user.id %>
   <p>メールアドレス: <%= @user.email %></p>
+<% else %>
+  <%= render 'users/follow_form', user: @user %>
 <% end %>
-
 <%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id), class:"btn btn-primary" %>
 
 <% if current_user.id == @user.id %>
@@ -13,7 +14,7 @@
         <h4>フォロー中</h4>
         <% @following.each do |following|%>
         <% if current_user.id == @user.id %>
-        <p>Name: <%= link_to following.name, review_users_path(id: following.id) %></p>
+        <p>Name: <%= link_to following.name, user_path(id: following.id) %></p>
         <% else %>
         <p>Name: <%= following.name %></p>
         <% end %>
