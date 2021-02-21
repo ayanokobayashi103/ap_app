@@ -9,9 +9,12 @@ FactoryBot.define do
     postcode { '1234567' }
   end
   factory :owner2, class: Owner do
-    name { 'user2' }
-    email { 'user2@u.com' }
-    password { 'userpass2' }
-    password_confirmation { 'userpass2' }
+    name { 'owner2' }
+    email { 'owner2@o.com' }
+    password { 'ownerpass' }
+    password_confirmation { 'ownerpass' }
+    company { 'owner2.co' }
+    tel { '0123456789' }
+    postcode { '1540007' }
   end
 end

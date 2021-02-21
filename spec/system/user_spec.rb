@@ -34,75 +34,57 @@ RSpec.describe 'User', type: :system do
         visit root_path
         click_link 'マイページ'
         expect(page).to have_content 'user1さんのページ'
+        expect(page).to have_content 'フォロー中'
       end
     end
+    context '自分の詳細ページからクチコミ履歴が見れる' do
+      it 'クチコミ一覧画面が表示' do
+        visit root_path
+        click_link 'マイページ'
+        click_on 'クチコミ投稿履歴をみる'
+        expect(page).to have_content 'user1さんのクチコミ履歴'
+      end
+    end
+    context '他人の詳細画面に飛べるがフォロー者は見れない' do
+      it '他人のマイページが見れる' do
+        user2 = FactoryBot.create(:user2)
+        visit user_path(user2)
+        expect(page).to have_content 'user2さんのページ'
+        expect(page).not_to have_content 'フォロー中'
+      end
+    end
+    context '店主のページに飛べないこと' do
+      it 'ログイン画面へ飛ばされる' do
+        owner = FactoryBot.create(:owner)
+        visit owner_path(owner)
+        expect(page).to have_content 'ログインしてください'
+      end
+    end
+    context 'ログアウトができること' do
+      it 'ログアウトしたことがわかる表示が出る' do
+        visit root_path
+        click_on 'ログアウト'
+        expect(page).to have_content 'ログアウトしました!'
+      end
+    end
+  end
 
-  #   context '他人の詳細画面に飛べないこと' do
-  #     it '自分のタスク一覧に遷移する' do
+  # describe 'フォロー機能のテスト' do
+  #   before do
+  #     visit new_user_session_path
+  #     fill_in 'user[email]', with:'user@u.com'
+  #     fill_in 'user[password]', with:'userpass1'
+  #     click_button 'ログイン'
+  #     FactoryBot.create(:shop)
+  #
+  #   end
+  #   context 'フォローしている人のクチコミ履歴ページをみれる' do
+  #     it 'フォロー者のクチコミ一覧画面が表示' do
   #       user2 = FactoryBot.create(:user2)
   #       visit user_path(user2)
-  #       expect(page).to have_content 'エラー'
-  #     end
-  #   end
-  #   context 'ログアウトができること' do
-  #     it 'ログアウトしたことがわかる表示が出る' do
-  #       visit tasks_path
-  #       click_on 'Logout'
-  #       expect(page).to have_content 'ログアウトしました'
+  #       click_on 'クチコミ投稿履歴をみる'
+  #       expect(page).to have_content 'user2さんのクチコミ履歴'
   #     end
   #   end
   # end
-  #
-  # describe '管理画面のテスト' do
-  #   context '一般ユーザは管理画面にアクセスできないこと' do
-  #     it 'ユーザーのページに戻ってくること' do
-  #       visit new_session_path
-  #       fill_in 'session[email]', with:'user@u.com'
-  #       fill_in 'session[password]', with:'userpass1'
-  #       click_on 'Log in'
-  #       visit admin_users_path
-  #       expect(page).to have_content '管理者のみアクセスできます'
-  #     end
-  #   end
-  #   context '管理ユーザは管理画面にアクセスできること' do
-  #     before do
-  #       visit new_session_path
-  #       fill_in 'session[email]', with:'admin@a.com'
-  #       fill_in 'session[password]', with:'adminpass'
-  #       click_on 'Log in'
-  #     end
-  #     it 'ユーザーの一覧画面を表示できること' do
-  #       visit admin_users_path
-  #       expect(page).to have_content 'ユーザーの一覧'
-  #     end
-  #     it '管理ユーザはユーザの新規登録ができること' do
-  #       visit new_admin_user_path
-  #       fill_in 'user[name]', with:'新しいユーザー'
-  #       fill_in 'user[email]', with:'email@e.com'
-  #       fill_in 'user[password]', with:'password'
-  #       fill_in 'user[password_confirmation]', with:'password'
-  #       click_on 'Create this account'
-  #       expect(page).to have_content '新規登録しました！'
-  #     end
-  #     it '管理ユーザはユーザの詳細画面にアクセスできること' do
-  #       visit admin_users_path
-  #       page.all(".show-user")[1].click
-  #       expect(page).to have_content 'user1のタスク一覧'
-  #     end
-  #     it '管理ユーザはユーザの編集画面からユーザを編集できること' do
-  #       visit admin_users_path
-  #       page.all(".edit-user")[1].click
-  #       fill_in 'user[name]', with:'user1'
-  #       click_on 'Update this account'
-  #       expect(page).to have_content 'user1を編集しました'
-  #     end
-  #     it '管理ユーザはユーザの削除をできること' do
-  #       visit admin_users_path
-  #       page.all(".delete-user")[1].click
-  #       #  page.driver.browser.switch_to.alert.accept
-  #        page.accept_confirm
-  #       expect(page).to have_content '削除しました'
-  #     end
-    # end
-  end
 end

@@ -1,8 +1,6 @@
 require 'rails_helper'
-RSpec.describe 'User', type: :system do
-  before do
-    FactoryBot.create(:owner)
-  end
+RSpec.describe 'Owner', type: :system do
+
   describe '店主登録のテスト' do
     context '店主の新規登録ができること' do
       it 'noticeが表示される' do
@@ -20,25 +18,46 @@ RSpec.describe 'User', type: :system do
     end
   end
 
-  # describe 'セッション機能のテスト' do
-  #   before do
-  #     visit new_user_session_path
-  #     fill_in 'user[email]', with:'user@u.com'
-  #     fill_in 'user[password]', with:'userpass1'
-  #     click_button 'ログイン'
-  #   end
-  #   context 'ログインができること' do
-  #     it 'ログインページに遷移' do
-  #       expect(page).to have_content 'ログインしました!'
-  #     end
-  #   end
-  #   context '自分の詳細画面(マイページ)に飛べること' do
-  #     it 'マイページが表示される' do
-  #       visit root_path
-  #       click_link 'マイページ'
-  #       expect(page).to have_content 'user1さんのページ'
-  #     end
-  #   end
-  #
-  # end
+  describe 'セッション機能のテスト' do
+    before do
+      @owner = FactoryBot.create(:owner)
+      @owner2 = FactoryBot.create(:owner2)
+      visit new_owner_session_path
+      fill_in 'owner[email]', with:'owner@o.com'
+      fill_in 'owner[password]', with:'ownerpass'
+      click_button 'ログイン'
+      FactoryBot.create(:shop2, owner: @owner)
+    end
+    context 'ログインができること' do
+      it 'ログインページに遷移' do
+        expect(page).to have_content 'ログインしました!'
+      end
+    end
+    context '登録した店舗一覧画面に遷移' do
+      it '登録した店舗が表示される' do
+        visit owner_path(@owner)
+        expect(page).to have_content 'shop2'
+      end
+    end
+    context '他店主の詳細ページは見れない' do
+      it 'メインページに遷移される' do
+        visit owner_path(@owner2)
+        expect(page).to have_content 'エラー'
+      end
+    end
+    context 'ユーザーのページ詳細ページに飛べない' do
+      it 'ログインページに遷移する' do
+        user = FactoryBot.create(:user)
+        visit user_path(user)
+        expect(page).to have_content 'ログインしてください'
+      end
+    end
+    context 'ログアウトができること' do
+      it 'ログアウトしたことがわかる表示が出る' do
+        visit root_path
+        click_link 'ログアウト'
+        expect(page).to have_content 'ログアウトしました!'
+      end
+    end
+  end
 end
