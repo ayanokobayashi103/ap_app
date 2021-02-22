@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'User', type: :system do
   before do
-    FactoryBot.create(:user)
+    @user = FactoryBot.create(:user)
   end
   describe 'ユーザ登録のテスト' do
     context 'ユーザの新規登録ができること' do
@@ -63,28 +63,44 @@ RSpec.describe 'User', type: :system do
     context 'ログアウトができること' do
       it 'ログアウトしたことがわかる表示が出る' do
         visit root_path
+        sleep(1)
         click_on 'ログアウト'
         expect(page).to have_content 'ログアウトしました!'
       end
     end
   end
 
-  # describe 'フォロー機能のテスト' do
-  #   before do
-  #     visit new_user_session_path
-  #     fill_in 'user[email]', with:'user@u.com'
-  #     fill_in 'user[password]', with:'userpass1'
-  #     click_button 'ログイン'
-  #     FactoryBot.create(:shop)
-  #
-  #   end
-  #   context 'フォローしている人のクチコミ履歴ページをみれる' do
-  #     it 'フォロー者のクチコミ一覧画面が表示' do
-  #       user2 = FactoryBot.create(:user2)
-  #       visit user_path(user2)
-  #       click_on 'クチコミ投稿履歴をみる'
-  #       expect(page).to have_content 'user2さんのクチコミ履歴'
-  #     end
-  #   end
-  # end
+  describe 'フォロー機能のテスト' do
+    before do
+      @owner = FactoryBot.create(:owner)
+      @shop = FactoryBot.create(:shop, owner: @owner)
+      @review = FactoryBot.create(:review, shop: @shop, user:@user)
+      @user2 = FactoryBot.create(:user2)
+      visit new_user_session_path
+      fill_in 'user[email]', with:'user2@u.com'
+      fill_in 'user[password]', with:'userpass2'
+      click_button 'ログイン'
+    end
+    context 'フォローができる' do
+      it 'マイページにフォローしたユーザーの一覧が表示' do
+        visit shop_reviews_path(@shop)
+        click_on '詳細表示'
+        click_on 'フォロー'
+        sleep(1)
+        click_on 'マイページ'
+        expect(page).to have_content 'Name: user1'
+      end
+    end
+    context 'フォローしている人のクチコミ履歴ページをみれる' do
+      it 'フォロー者のクチコミ一覧画面が表示' do
+        @relationship = Relationship.create(follower_id: @user2.id, followed_id: @user.id)
+        click_on 'マイページ'
+        click_on 'user1'
+        click_on 'フォロー解除'
+        sleep(1)
+        click_on 'マイページ'
+        expect(page).not_to have_content 'Name: user1'
+      end
+    end
+  end
 end
