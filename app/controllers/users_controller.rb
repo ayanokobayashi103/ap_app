@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def review
     user_params
     if current_user.id != @user.id
-      redirect_to user_path(user_params), notice: "エラー"
+      @user=User.find(params[:id])
     end
   end
 
