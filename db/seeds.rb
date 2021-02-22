@@ -1,4 +1,3 @@
-require 'faker'
 # User
 20.times do |n|
   n += 1
