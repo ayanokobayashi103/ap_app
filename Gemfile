@@ -21,7 +21,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.2'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
-  gem 'faker'
   gem 'launchy'
 end
 
@@ -42,3 +41,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'ransack'
+gem 'faker'
