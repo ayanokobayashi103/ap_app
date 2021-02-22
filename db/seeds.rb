@@ -1,8 +1,3 @@
-User.destroy_all
-Owner.destroy_all
-Shop.destroy_all
-Review.destroy_all
-
 n = 1
 m = 0
 # User
@@ -52,7 +47,7 @@ end
                detail: detail,
                owner_id: n,
                url: "",
-               contact_detail: "",
+               contact_detail: "05012345678",
                id: n
                )
 end
