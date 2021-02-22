@@ -10,8 +10,8 @@ RSpec.describe 'Review', type: :system do
       fill_in 'user[password]', with:'userpass1'
       click_button 'ログイン'
     end
-    context 'タスクを新規作成した場合' do
-      it '作成したタスクが表示される' do
+    context 'クチコミを新規作成した場合' do
+      it '作成したクチコミが表示される' do
         visit shop_reviews_path(@shop)
         click_on 'クチコミする'
         fill_in 'review[content]', with:'いいね'
@@ -33,7 +33,7 @@ RSpec.describe 'Review', type: :system do
       fill_in 'user[password]', with:'userpass1'
       click_button 'ログイン'
     end
-    context 'タスクを編集できる' do
+    context 'クチコミを編集できる' do
       it '編集した内容が表示される' do
         visit edit_shop_review_path(@shop, @review)
         fill_in 'review[content]', with:'とてもいいね'
@@ -42,7 +42,7 @@ RSpec.describe 'Review', type: :system do
         expect(page).to have_content 'クチコミを編集しました！'
       end
     end
-    context 'タスクを削除できる' do
+    context 'クチコミを削除できる' do
       it '削除した内容が表示されていない' do
         visit shop_reviews_path(@shop)
         click_on '削除する'

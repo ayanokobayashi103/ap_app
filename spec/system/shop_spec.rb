@@ -8,8 +8,8 @@ RSpec.describe 'Shop', type: :system do
       fill_in 'owner[password]', with:'ownerpass'
       click_button 'ログイン'
     end
-    context 'タスクを新規作成した場合' do
-      it '作成したタスクが表示される' do
+    context '店を新規作成した場合' do
+      it '作成した店が表示される' do
         visit new_shop_path
         fill_in 'shop[name]', with:'shop'
         fill_in 'shop[brand]', with:'shop'

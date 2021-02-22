@@ -91,8 +91,8 @@ RSpec.describe 'User', type: :system do
         expect(page).to have_content 'Name: user1'
       end
     end
-    context 'フォローしている人のクチコミ履歴ページをみれる' do
-      it 'フォロー者のクチコミ一覧画面が表示' do
+    context 'フォロー解除ができる' do
+      it 'フォロー解除したユーザーがマイページに表示されない' do
         @relationship = Relationship.create(follower_id: @user2.id, followed_id: @user.id)
         click_on 'マイページ'
         click_on 'user1'

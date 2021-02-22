@@ -1,39 +1,24 @@
 require 'rails_helper'
-RSpec.describe Relationship, type: :model do
-  describe 'バリデーションのテスト' do
+describe 'relationshipモデル機能', type: :model do
+  describe 'フォロー機能のテスト' do
     let(:user) { FactoryBot.create(:user) } # => フォローしているユーザ
     let(:user2) { FactoryBot.create(:user2) } # => フォローされているユーザ
     let(:active) { user.active_relationships.build(followed_id: user2.id) }
 
-    subject { active }
-
-    # リレーションシップが有効であること
-    it { should be_valid }
-
-    # follow/followedメソッド
-    describe "follower/followed methods" do
-      it { should respond_to(:follower) }
-      it { should respond_to(:followed) }
-      # followメソッドは、フォローしているユーザを返すこと
-      it "follower method return following-user" do
-        expect(active.follower). to eq user
+    describe 'バリデーションのテスト' do
+      it 'リレーションシップが有効であること' do
+        active.valid?
+        expect(active).to be_valid
       end
-      # followerメソッドは、フォローされているユーザを返すこと
-      it "followed method return followed-user" do
-        expect(active.followed). to eq user2
-      end
-      # or
-      # its(:follower) { should eq user }
-      # its(:followed) { should eq other_user }
     end
 
-    # # validations
-    # describe "validations" do
-    #   # 存在性 presence
-    #   describe "presence" do
-    #     it { is_expected.to validate_presence_of :followed_id }
-    #     it { is_expected.to validate_presence_of :follower_id }
-    #   end
-    # end
+    describe "フォロー機能のテスト" do
+      it "followメソッドは、フォローしているユーザを返すこと" do
+        expect(active.follower). to eq user
+      end
+      it "followerメソッドは、フォローされているユーザを返すこと" do
+        expect(active.followed). to eq user2
+      end
+    end
   end
 end
