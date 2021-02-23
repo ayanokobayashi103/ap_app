@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
   validates :detail, length: { maximum: 500 }
   VALID_TEL_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :contact_detail, format: { with: VALID_TEL_REGEX }
+  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
   belongs_to :owner
   has_many :reviews, dependent: :destroy
   has_many :review_users, through: :reviews, source: :user

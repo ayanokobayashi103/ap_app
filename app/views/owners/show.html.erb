@@ -6,6 +6,7 @@
       <th>住所</th>
       <th>詳細</th>
       <th>編集</th>
+      <th>削除</th>
     </tr>
   </thead>
   <% @owner.shops.each do |shop| %>
@@ -20,6 +21,11 @@
       <td>
         <%= link_to edit_shop_path(shop.id), id: 'edit-shop', class:"btn btn-dark btn-xs" do  %>
         <i class="fas fa-pen"></i>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to shop_path(shop.id), method: :delete, data: { confirm: '本当に削除していいですか？投稿されたクチコミも削除されます' },class: "btn btn-dark btn-xs", id: 'delete-shop' do %>
+        <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
     </tr>
