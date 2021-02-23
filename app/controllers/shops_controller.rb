@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :set_shop, only: [:show, :edit, :update]
+  before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_action :owner?, only: [:new, :ceate, :edit, :update]
 
   def index
@@ -34,6 +34,11 @@ class ShopsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @shop.destroy
+    redirect_to owner_path(@shop.owner_id), notice: '店舗を削除しました'
   end
 
   private
