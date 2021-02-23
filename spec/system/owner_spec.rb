@@ -39,6 +39,16 @@ RSpec.describe 'Owner', type: :system do
         expect(page).to have_content 'shop2'
       end
     end
+    context '登録した店舗の編集ができる' do
+      it '編集した店舗の内容が表示される' do
+        visit owner_path(@owner)
+        find('#edit-shop').click
+        fill_in 'shop[name]', with:'shopshop'
+        click_on '更新する'
+        visit owner_path(@owner)
+        expect(page).to have_content 'shopshop'
+      end
+    end
     context '他店主の詳細ページは見れない' do
       it 'メインページに遷移される' do
         visit owner_path(@owner2)

@@ -6,7 +6,7 @@ describe 'shopモデル機能', type: :model do
 
   describe 'バリデーションのテスト' do
     context '店名が空の場合' do
-      it 'バリデーションにひっかる' do
+      it 'バリデーションにひっかかる' do
         shop = Shop.new(
           name: '',
           brand: 'brand',
@@ -36,7 +36,7 @@ describe 'shopモデル機能', type: :model do
       end
     end
     context '全て記載されている場合' do
-      it 'バリデーションが通る' do
+      it 'バリデーションを通る' do
         shop = Shop.new(
           name: 'name',
           brand: 'brand',
@@ -48,6 +48,17 @@ describe 'shopモデル機能', type: :model do
           owner:@owner
         )
         expect(shop).to be_valid
+      end
+    end
+    context '営業開始時間の入力方法が違う場合' do
+      it 'バリデーションにひっかかる' do
+        shop = FactoryBot.build(:shop, owner:@owner, start_dt:'10:00' )
+        expect(shop).to be_valid
+      end
+      it 'バリデーションを通る' do
+        shop = FactoryBot.build(:shop, owner:@owner, start_dt:'1000' )
+        shop.valid?
+        expect(shop.errors[:start_dt]).to include("は不正な値です")
       end
     end
   end
