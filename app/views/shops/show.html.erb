@@ -1,3 +1,4 @@
+<div class='container-fluid' id='shop-show-container'>
 <h1><%= "#{@shop.brand}" %></h1>
 <p>店舗名:　<%= @shop.name %></p>
 <p>住所: <%= @shop.address %></p>
@@ -6,5 +7,6 @@
 <p>詳細:<%= @shop.detail %></p>
 <p>電話番号:<%= @shop.contact_detail %></p>
 
-<%= link_to 'クチコミ', shop_reviews_path(shop_id: @shop.id), class:"btn btn-primary" %><br>
+<%= link_to 'クチコミ', shop_reviews_path(shop_id: @shop.id), class:"btn btn-primary" %><br></br>
 <%= link_to '店一覧へ', shops_path %>
+</div>

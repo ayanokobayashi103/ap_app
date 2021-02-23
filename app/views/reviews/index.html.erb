@@ -2,7 +2,6 @@
 <% if current_user %>
   <%= link_to 'クチコミする', new_shop_review_path, class: 'btn btn-primary' %>
 <% end %>
-
 <div class = "container">
 <% @shop.reviews.each do |review| %><p>
 <div class = "card">

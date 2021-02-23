@@ -81,9 +81,11 @@
    margin-top: 20px;
    padding: 5px 60px
  }
-
  #new_shop_card {
    padding: 40px;
+ }
+ #shop-show-container {
+   background: white;
  }
  /* notice */
 .alart {
