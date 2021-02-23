@@ -29,8 +29,11 @@ class ShopsController < ApplicationController
   end
 
   def update
-    @shop.update(shop_params)
-    redirect_to shops_path, notice: "店舗の編集をしました"
+    if @shop.update(shop_params)
+      redirect_to owner_path(@shop.owner_id), notice: "店舗の編集をしました"
+    else
+      render :edit
+    end
   end
 
   private
