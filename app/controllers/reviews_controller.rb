@@ -30,10 +30,13 @@ class ReviewsController < ApplicationController
   def edit
     @review.shop_id = params[:shop_id]
   end
-
+  
   def update
-    @review.update(review_params)
-    redirect_to shop_reviews_path, notice: "クチコミを編集しました！"
+    if @review.update(review_params)
+      redirect_to shop_reviews_path, notice: "クチコミを編集しました！"
+    else
+      render :edit
+    end
   end
 
   def destroy
