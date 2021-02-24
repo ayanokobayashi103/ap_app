@@ -41,7 +41,7 @@ end
                end_dt: "18:00",
                detail: detail,
                owner_id: "#{n + 1}",
-               url: "http:",
+               url: "",
                contact_detail: "05012345678",
                id: "#{n + 1}"
                )
