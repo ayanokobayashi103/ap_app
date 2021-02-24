@@ -14,11 +14,7 @@
       <div class="card">
         <h4>フォロー中</h4>
         <% @following.each do |following|%>
-        <% if current_user.id == @user.id %>
         <p>Name: <%= link_to following.name, user_path(id: following.id) %></p>
-        <% else %>
-        <p>Name: <%= following.name %></p>
-        <% end %>
         <% end %>
       </div>
     </div>
@@ -26,7 +22,7 @@
       <div class="card">
         <h4>フォロワー</h4>
         <% @followers.each do |followers|%>
-        <p>Name: <%= followers.name %></p>
+        <p>Name: <%= link_to followers.name, user_path(id: followers.id) %></p>
         <% end %>
         <% end %>
       </div>
