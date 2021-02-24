@@ -4,6 +4,7 @@
 <% else %>
   <%= render 'users/follow_form', user: @user %>
 <% end %>
+<br>
 <%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id), class:"btn btn-primary" %>
 
 <% if current_user.id == @user.id %>
