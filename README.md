@@ -29,7 +29,7 @@
     - [x] ユーザーはお店に対してクチコミの投稿、編集、削除ができる
 
 ### デプロイ先
-Heroku
+[Heroku](https://pure-meadow-89852.herokuapp.com/)
 
 
 ### 使用予定Gem
