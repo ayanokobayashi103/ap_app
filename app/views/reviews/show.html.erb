@@ -1,16 +1,17 @@
-<h1>詳細画面</h1>
+<h2>詳細画面</h2>
 <% if user_signed_in? %>
-<p>投稿者: <%= link_to @review.user.name, user_path(@review.user.id) %></p>
+
+投稿者: <%= link_to @review.user.name, user_path(@review.user.id) %>
+
+<% unless current_user.id == @review.user.id %>
+  <%= render 'users/follow_form', user: @review.user %>
+<% end %>
+
 <% else %>
 <p>投稿者: <%= @review.user.name %></p>
 <% end %>
 
 <p>内容: <%= @review.content %></p>
 
-<% if user_signed_in? %>
-  <% unless current_user.id == @review.user.id %>
-    <%= render 'users/follow_form', user: @review.user %>
-  <% end %>
-<% end %>
 
 <%= link_to 'クチコミ一覧へ', shop_reviews_path %>

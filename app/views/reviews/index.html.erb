@@ -1,20 +1,23 @@
-<h1><%= link_to @shop.name, shop_path(@shop)%>のクチコミ一覧 </h1>
+<h2><%= link_to @shop.name, shop_path(@shop)%>のクチコミ一覧 </h2>
 <% if current_user %>
   <%= link_to 'クチコミする', new_shop_review_path, class: 'btn btn-primary' %>
 <% end %>
 <div class = "container">
-<% @shop.reviews.each do |review| %><p>
-<div class = "card">
-<p>投稿者:<%= review.user.name %></p>
-<p>クチコミ:<%= review.content %></p>
-<p>投稿時間:<%= l review.created_at, format: :long %></p>
-<p><%= link_to '詳細表示', shop_review_path(@shop.id,review.id) %></p>
-  <% if user_signed_in? %>
-    <% if current_user.id == review.user.id%>
-      <p><%= link_to '編集する', edit_shop_review_path(@shop.id,review.id)%></p>
-      <p><%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %></p>
-    <% end %>
+  <% @shop.reviews.each do |review| %><p>
+    <div class = "card">
+      <p>投稿者:<%= review.user.name %></p>
+      <p><%= review.content %></p>
+      <p>投稿時間:<%= l review.created_at, format: :long %></p>
+
+      <form >
+        <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
+        <% if user_signed_in? %>
+          <% if current_user.id == review.user.id%>
+            <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
+            <%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' },class:"btn btn-outline-primary btn-sm" %>
+          <% end %>
+        <% end %>
+      </form>
+    </div>
   <% end %>
-</div>
-<% end %>
 </div>

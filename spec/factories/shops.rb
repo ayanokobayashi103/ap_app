@@ -7,7 +7,7 @@ FactoryBot.define do
     end_dt { '20:00' }
     detail { '10月にオープンしたメンズ服のお店です' }
     contact_detail { '0123456789' }
-    url { "http" }
+    url { "http:" }
   end
   factory :shop2, class: Shop do
     name { 'shop2' }
@@ -17,7 +17,7 @@ FactoryBot.define do
     end_dt { '20:00' }
     detail { '去年オープンしたベビー服のお店です' }
     contact_detail { '0901111111' }
-    url { "http" }
+    url { "http:" }
   end
   factory :shop3, class: Shop do
     name { 'shop3' }
@@ -25,7 +25,7 @@ FactoryBot.define do
     address { '1-1-1 Umeda, Osaka' }
     start_dt { '10:00' }
     end_dt { '20:00' }
-    detail { '去年オープンしたベビー服のお店です' }
+    detail { '古着のお店です' }
     contact_detail { '01201111111' }
   end
 end

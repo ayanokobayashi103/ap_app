@@ -2,7 +2,7 @@
 <div class="container">
   <% @user.reviews.each do |review| %><p>
     <div class="card">
-      <%= link_to review.shop.name, shop_path(review.shop.id) %>:<%= review.content %>
+      <%= link_to review.shop.name, shop_path(review.shop.id) %><%= review.content %>
     </div>
   <% end %>
 </div>
