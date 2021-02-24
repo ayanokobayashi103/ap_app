@@ -87,6 +87,9 @@
  #shop-show-container {
    background: white;
  }
+ .new-shop-field {
+   margin-top: 15px;
+ }
  /* notice */
 .alart {
   background: red;

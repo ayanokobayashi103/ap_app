@@ -8,37 +8,37 @@
       <%= render "owners/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :name %><br/>
+        <br>
         <%= f.text_field :name, class: "form-control", placeholder:"名前" %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br/>
+        <br>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"メールアドレス" %>
       </div>
 
       <div class="field">
-        <%= f.label :company %><br/>
+        <br/>
         <%= f.text_field :company, class: "form-control", placeholder:"会社名" %>
       </div>
 
       <div class="field">
-        <%= f.label :tel %><br/>
-        <%= f.text_field :tel, class: "form-control", placeholder:"ハイフンは入れないでください" %>
+        <br>
+        <%= f.text_field :tel, class: "form-control", placeholder:"電話番号(ハイフンなし)" %>
       </div>
 
       <div class="field">
-        <%= f.label :postcode %><br/>
-        <%= f.text_field :postcode, class: "form-control", placeholder:"ハイフンは入れないでください" %>
+        <br>
+        <%= f.text_field :postcode, class: "form-control", placeholder:"郵便番号(ハイフンなし)" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <br>
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"6文字以上" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br/>
+        <br>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder:"確認パスワード" %>
       </div>
 

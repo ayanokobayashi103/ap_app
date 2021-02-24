@@ -1,10 +1,10 @@
-<h1><%= "#{@user.name}" %>さんのページ</h1>
+<h2><%= "#{@user.name}" %>さんのページ</h2>
 <% if current_user.id == @user.id %>
   <p>メールアドレス: <%= @user.email %></p>
 <% else %>
-  <%= render 'users/follow_form', user: @user %>
+  <%= render 'users/follow_form', user: @user %><br>
 <% end %>
-<br>
+
 <%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id), class:"btn btn-primary" %>
 
 <% if current_user.id == @user.id %>
