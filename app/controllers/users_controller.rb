@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def review
     user_params
     if current_user.id != @user.id
-      @user=User.find(params[:id])
+      @user = User.find(params[:id])
     end
   end
 
