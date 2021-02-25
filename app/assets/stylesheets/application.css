@@ -84,11 +84,11 @@
  #new_shop_card {
    padding: 40px;
  }
- #shop-show-container {
+ #show-container {
    background: white;
  }
  .new-shop-field {
-   margin-top: 15px;
+   margin-top: 18px;
  }
 .btn-sm {
   margin-bottom:10px;
@@ -99,4 +99,17 @@
 }
 .notice {
   background: gold;
+}
+
+label {
+  display: block;
+}
+label.required:after {
+  margin-left: 1.0em;
+  padding: 0px 6px 0px 6px;
+  border-radius: 4px;
+  font-size: 0.6em;
+  color: white;
+  background-color: #C44;
+  content: "必須";
 }
