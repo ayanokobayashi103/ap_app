@@ -15,42 +15,42 @@
         <% end %>
 
         <div class="new-shop-field">
-          <%= form.label :name %><br>
+          <%= form.label :name, class:"required" %>
           <%= form.text_field :name, class: "form-control" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :brand %><br>
+          <%= form.label :brand %>
           <%= form.text_field :brand, class: "form-control" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :address %><br>
+          <%= form.label :address, class:"required" %>
           <%= form.text_area :address, class: "form-control" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :start_dt %><br>
+          <%= form.label :start_dt, class:"required" %>
           <%= form.text_field :start_dt , class: "form-control", placeholder: "例:9:00 半角数字で入力してください" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :end_dt %><br>
+          <%= form.label :end_dt, class:"required" %>
           <%= form.text_field :end_dt, class: "form-control", placeholder: "例:20:00 半角数字で入力してください" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :detail %><br>
+          <%= form.label :detail %>
           <%= form.text_area :detail, class: "form-control" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :url %><br>
+          <%= form.label :url %>
           <%= form.text_area :url, class: "form-control" %>
         </div>
 
         <div class="new-shop-field">
-          <%= form.label :contact_detail %><br>
+          <%= form.label :contact_detail, class:"required" %>
           <%= form.text_field :contact_detail, placeholder: "ハイフンは入れずに半角数字で入力してください", class: "form-control" %>
         </div>
         <br>
