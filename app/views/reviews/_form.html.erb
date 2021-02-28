@@ -15,6 +15,23 @@
     <%= form.text_area :content, style:"width:500px; resize: none; height:200px;"%>
   </div>
 
+  <div class="field" id="star">
+    <%= form.label :score, "星評価：" %>
+    <%= form.hidden_field :score, id: :review_star %>
+  </div>
+
+  <script>
+    $('#star').raty({
+      size     : 36,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[score]',
+      half: true,
+      score: '<%= @review.score %>',
+    });
+  </script>
+
   <div class="actions">
     <%= form.submit "投稿する" %>
   </div>
