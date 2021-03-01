@@ -16,8 +16,8 @@
   </div>
 
   <div class="field" id="star">
-    <%= form.label :score, "星評価：" %>
-    <%= form.hidden_field :score, id: :review_star %>
+    <%= form.label :rate, "星評価：" %>
+    <%= form.hidden_field :rate, id: :review_star %>
   </div>
 
   <script>
@@ -26,9 +26,9 @@
       starOff: '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'review[score]',
+      scoreName: 'review[rate]',
       half: true,
-      score: '<%= @review.score %>',
+      score: '<%= @review.rate %>',
     });
   </script>
 
