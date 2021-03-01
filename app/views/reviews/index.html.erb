@@ -5,12 +5,20 @@
 <div class = "container">
   <% @shop.reviews.each do |review| %><p>
     <div class = "card">
-      <p>投稿者:<%= review.user.name %></p>
+
+      <% if user_signed_in? %>
+      <p>投稿者:<%= link_to review.user.name, user_path(review.user.id) %></p>
+
+      <% unless current_user.id == review.user.id %>
+        <%= render 'users/follow_form', user: review.user %>
+      <% end %>
+      <% else %>
+      <p>投稿者: <%= review.user.name %></p>
+      <% end %>
       <p><%= review.content %></p>
       <p>投稿時間:<%= l review.created_at, format: :long %></p>
 
-      <form >
-        <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
+      <form>
         <% if user_signed_in? %>
           <% if current_user.id == review.user.id%>
             <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
