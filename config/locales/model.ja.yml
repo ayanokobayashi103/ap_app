@@ -28,5 +28,6 @@ ja:
         contact_detail: 電話番号
         start_dt: 営業開始時間
         end_dt: 営業終了時間
+        image: 画像
       review:
         content: 内容

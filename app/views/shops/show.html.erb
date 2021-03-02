@@ -1,4 +1,7 @@
 <div class='container-fluid' id='show-container'>
+  <p>
+    <%= image_tag @shop.image.url %>
+  </p>
 <h1><%= "#{@shop.brand}" %></h1>
 <p>店舗名:　<%= @shop.name %></p>
 <p>住所: <%= @shop.address %></p>
