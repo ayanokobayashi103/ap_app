@@ -5,30 +5,28 @@
 <div class = "container">
   <% @shop.reviews.each do |review| %><p>
     <div class = "row">
-      <div class = "review-post main-post col-8 offset-2">
-        <div class="content review-score">
-          <div class="star-rating ">
-            <div class="star-rating-front" style="width:<%= review.score_percentage %>%">★★★★★</div>
-            <div class="star-rating-back">★★★★★</div>
-          </div>
-          <div class="review-score-display">
-            <%= review.score %>点
-          </div>
-        </div>
-
+      <div class = "review-post col-8 offset-2">
         <% if user_signed_in? %>
         <p>投稿者:<%= link_to review.user.name, user_path(review.user.id) %></p>
-
         <% unless current_user.id == review.user.id %>
         <%= render 'users/follow_form', user: review.user %>
         <% end %>
         <% else %>
         <p>投稿者: <%= review.user.name %></p>
         <% end %>
-
         <p><%= review.content %></p>
-        <p>投稿時間:<%= l review.created_at, format: :long %></p>
 
+        <div class="content review-score">
+          <div class="star-rating" style='margin-left: auto; margin-right: auto;'>
+            <div class="star-rating-front" style="width:<%= review.score_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div><br>
+          <div class="review-score-display">
+            評価：<%= review.score %>点
+          </div>
+        </div>
+
+        <p>投稿時間:<%= l review.created_at, format: :long %></p>
         <form>
           <% if user_signed_in? %>
           <% if current_user.id == review.user.id%>
@@ -40,6 +38,4 @@
       </div>
         </div>
       <% end %>
-
-
   </div>

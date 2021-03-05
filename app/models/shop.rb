@@ -13,7 +13,7 @@ class Shop < ApplicationRecord
   has_many :review_users, through: :reviews, source: :user
 
   def review_score_percentage
-    unless self.reviews.empty?
+    if self.reviews
       reviews.average(:score).to_f*100/5
     else
       0.0
@@ -21,8 +21,8 @@ class Shop < ApplicationRecord
   end
 
   def review_score_average
-    unless self.reviews.empty?
-      reviews.average(:score).to_f
+    if self.reviews
+      reviews.average(:score).to_f.round(1)
     else
       0.0
     end
