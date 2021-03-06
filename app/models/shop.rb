@@ -11,4 +11,20 @@ class Shop < ApplicationRecord
   belongs_to :owner
   has_many :reviews, dependent: :destroy
   has_many :review_users, through: :reviews, source: :user
+
+  def review_score_percentage
+    if self.reviews
+      reviews.average(:score).to_f*100/5
+    else
+      0.0
+    end
+  end
+
+  def review_score_average
+    if self.reviews
+      reviews.average(:score).to_f.round(1)
+    else
+      0.0
+    end
+  end
 end

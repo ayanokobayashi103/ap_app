@@ -15,6 +15,7 @@ RSpec.describe 'Review', type: :system do
         visit shop_reviews_path(@shop)
         click_on 'クチコミする'
         fill_in 'review[content]', with:'いいね'
+        find("input[name='review[score]'][value='3']").set(true)
         click_on '投稿する'
         expect(page).to have_content 'いいね'
         expect(page).to have_content 'クチコミ投稿しました！'

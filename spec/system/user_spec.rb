@@ -84,8 +84,7 @@ RSpec.describe 'User', type: :system do
     context 'フォローができる' do
       it 'マイページにフォローしたユーザーの一覧が表示' do
         visit shop_reviews_path(@shop)
-        click_on '詳細表示'
-        click_on 'フォロー'
+        click_on 'follow'
         sleep(1)
         click_on 'マイページ'
         expect(page).to have_content 'Name: user1'
@@ -96,7 +95,7 @@ RSpec.describe 'User', type: :system do
         @relationship = Relationship.create(follower_id: @user2.id, followed_id: @user.id)
         click_on 'マイページ'
         click_on 'user1'
-        click_on 'フォロー解除'
+        click_on 'followed'
         sleep(1)
         click_on 'マイページ'
         expect(page).not_to have_content 'Name: user1'

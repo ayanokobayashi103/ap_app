@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
   def edit
     @review.shop_id = params[:shop_id]
   end
-  
+
   def update
     if @review.update(review_params)
       redirect_to shop_reviews_path, notice: "クチコミを編集しました！"
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :score)
   end
 
   def set_review
