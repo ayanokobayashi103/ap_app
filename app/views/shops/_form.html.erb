@@ -53,6 +53,14 @@
           <%= form.label :contact_detail, class:"required" %>
           <%= form.text_field :contact_detail, placeholder: "ハイフンは入れずに半角数字で入力してください", class: "form-control" %>
         </div>
+
+        <div class="new-shop-field">
+          <%= form.label :image %>
+          <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
+          <%= form.file_field :image %>
+          <%= form.hidden_field :image_cache %>
+        </div>
+
         <br>
         <div class="actions">
           <%= form.submit %>
