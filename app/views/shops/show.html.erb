@@ -1,8 +1,6 @@
 <div class='container-fluid' id='show-container'>
   <p>
-    <% if @shop.image.url %>
-    <%= image_tag @shop.image.url %>
-    <%end%>
+    <%= image_tag default_img(@shop.image.url) %>
   </p>
 <h1><%= "#{@shop.brand}" %></h1>
 <p>店舗名:　<%= @shop.name %></p>
