@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :owners
   resources :relationships, only: [:create, :destroy]
+  resources :blacklists
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

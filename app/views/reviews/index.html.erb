@@ -35,6 +35,11 @@
           <% end %>
           <% end %>
         </form>
+
+        <% if owner_signed_in? && current_owner.id == @shop.owner.id %>
+        <% if %>
+        <%= link_to 'ブラックリスト', blacklists_path(shop_id:@shop.id, id:review.user_id) , method: :post %>
+        <% end %>
       </div>
         </div>
       <% end %>
