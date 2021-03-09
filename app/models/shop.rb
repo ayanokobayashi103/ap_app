@@ -30,4 +30,8 @@ class Shop < ApplicationRecord
       0.0
     end
   end
+
+  def blacklist_user(user)
+    self.blacklists.find_by(user_id:user).present?
+  end
 end

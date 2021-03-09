@@ -32,14 +32,14 @@
           <% if current_user.id == review.user.id%>
           <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
           <%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' },class:"btn btn-outline-primary btn-sm" %>
+
           <% end %>
           <% end %>
+          <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
+
         </form>
 
-        <% if owner_signed_in? && current_owner.id == @shop.owner.id %>
-        <% if %>
-        <%= link_to 'ブラックリスト', blacklists_path(shop_id:@shop.id, id:review.user_id) , method: :post %>
-        <% end %>
+      
       </div>
         </div>
       <% end %>
