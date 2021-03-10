@@ -1,0 +1,7 @@
+<div id="blacklist_form">
+  <% if @shop.blacklist_user(@review.user) %>
+    <%= link_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete,class: "btn btn-outline-success" %>
+  <% else %>
+    <%= link_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review) , method: :post,class: "btn btn-success" %>
+  <% end %>
+</div>
