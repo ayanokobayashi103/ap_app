@@ -1,0 +1,5 @@
+  <% if @shop.blacklist_user(@review.user) %>
+    <%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete, remote: true, class:"button_blacklist"%>
+  <% else %>
+    <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review) , method: :post,remote: true, class:"button_unblacklist" %>
+  <% end %>

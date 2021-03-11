@@ -12,6 +12,8 @@ class Shop < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :review_users, through: :reviews, source: :user
   mount_uploader :image, ImageUploader
+  has_many :blacklists, dependent: :destroy
+  has_many :blacklist_users, through: :blacklists, source: :user
 
   def review_score_percentage
     if self.reviews
@@ -27,5 +29,9 @@ class Shop < ApplicationRecord
     else
       0.0
     end
+  end
+
+  def blacklist_user(user)
+    self.blacklists.find_by(user_id:user).present?
   end
 end
