@@ -1,0 +1,1 @@
+<%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete, remote: true, class:"button_blacklist"%>

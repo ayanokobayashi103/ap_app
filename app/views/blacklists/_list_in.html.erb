@@ -1,0 +1,3 @@
+<div id="blacklist_form_<%= review.id %>">
+<%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review) , method: :post,remote: true, class:"button_unblacklist" %>
+</div>

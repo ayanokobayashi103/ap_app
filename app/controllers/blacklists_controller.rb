@@ -4,11 +4,13 @@ class BlacklistsController < ApplicationController
 
   def create
     blacklist = @shop.blacklists.create(user_id:@user)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @blacklist = @shop.blacklists.find_by(user_id:@user)
     @blacklist.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private
