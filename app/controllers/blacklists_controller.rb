@@ -4,6 +4,7 @@ class BlacklistsController < ApplicationController
 
   def create
     blacklist = @shop.blacklists.create(user_id:@user)
+    # 一つ前のページに戻るページがみるからない場合にルートパスに飛ばす記述
     redirect_back(fallback_location: root_path)
   end
 

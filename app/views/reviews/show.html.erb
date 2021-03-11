@@ -2,9 +2,9 @@
 <h2>詳細画面</h2>
 <% if owner_signed_in? && current_owner.id == @shop.owner.id %>
 <% if @shop.blacklist_user(@review.user) %>
-<%= render "blacklists/list_out", review: @review %>
+  <%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete, class:"button_blacklist"%>
 <% else %>
-<%= render "blacklists/list_in", review: @review %>
+  <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review), method: :post, class:"button_unblacklist" %>
 <% end %>
 <% end %>
 
@@ -12,9 +12,7 @@
 投稿者: <%= link_to @review.user.name, user_path(@review.user.id) %>
 
 <% unless current_user.id == @review.user.id %>
-
   <%= render 'users/follow_form', user: @review.user %>
-
 <% end %>
 
 <% else %>
