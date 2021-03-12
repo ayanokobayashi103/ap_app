@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
-
   end
 
   def new
@@ -26,6 +25,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @comments = @review.comments
+    @comment = @review.comments.build
   end
 
   def edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_132031) do
+ActiveRecord::Schema.define(version: 2021_03_12_042446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2021_03_08_132031) do
     t.index ["shop_id", "user_id"], name: "index_blacklists_on_shop_id_and_user_id", unique: true
     t.index ["shop_id"], name: "index_blacklists_on_shop_id"
     t.index ["user_id"], name: "index_blacklists_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "review_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
   end
 
   create_table "owners", force: :cascade do |t|
@@ -105,6 +113,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_132031) do
 
   add_foreign_key "blacklists", "shops"
   add_foreign_key "blacklists", "users"
+  add_foreign_key "comments", "reviews"
   add_foreign_key "reviews", "shops"
   add_foreign_key "reviews", "users"
   add_foreign_key "shops", "owners"
