@@ -18,15 +18,14 @@
 <% else %>
 <p>投稿者: <%= @review.user.name %></p>
 <% end %>
-
 <p>内容: <%= @review.content %></p>
 </div>
-<!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
 
-  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+<% if user_signed_in? || owner_signed_in?%>
   <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
+<% end %>
+
   <div id="comments_area">
-    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
     <%= render partial: 'comments/index', locals: { comments: @comments, review: @review } %>
   </div>
 </div>

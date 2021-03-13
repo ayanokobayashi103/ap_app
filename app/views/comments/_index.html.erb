@@ -1,13 +1,13 @@
-<ul>
   <% if @comment.present? %>
   <div class='container'>
     <% comments.each do |comment| %>
       <% if comment.id.present? %>
-        <div class="border border-primary" style="padding:5px; margin:5px;">
-          <p><%= comment.review.user_name %></p>
+        <div class="border border-primary" style="padding:5px; margin-top:5px;">
+          <p><%= comment.user.name %></p>
           <p><%= comment.content %></p>
+          <%=link_to "削除", review_comment_path(comment.review.id, comment_id:comment.id), method: :delete, remote: true %>
         </div>
       <% end %>
     <% end %>
+  </div>
   <% end %>
-</ul>
