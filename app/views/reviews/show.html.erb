@@ -20,14 +20,13 @@
 <% end %>
 
 <p>内容: <%= @review.content %></p>
-<%= link_to 'クチコミ一覧へ', shop_reviews_path %>
 </div>
 <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
   <div id="comments_area">
     <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
     <%= render partial: 'comments/index', locals: { comments: @comments, review: @review } %>
   </div>
-  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-  <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
-
 </div>

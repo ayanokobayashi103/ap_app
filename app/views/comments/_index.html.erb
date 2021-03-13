@@ -1,10 +1,12 @@
 <ul>
   <% if @comment.present? %>
+  <div class='container'>
     <% comments.each do |comment| %>
       <% if comment.id.present? %>
-        <li>
+        <div class="border border-primary" style="padding:5px; margin:5px;">
+          <p><%= comment.review.user_name %></p>
           <p><%= comment.content %></p>
-        </li>
+        </div>
       <% end %>
     <% end %>
   <% end %>
