@@ -32,3 +32,5 @@ ja:
       review:
         content: 内容
         score: 評価
+      comment:
+        content: コメント
