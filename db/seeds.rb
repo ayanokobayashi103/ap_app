@@ -53,6 +53,7 @@ end
   Review.create!(content: content,
                 shop_id: "#{n + 1}",
                 user_id: "#{n + 1}",
+                rate: rand(5)
                 )
 end
 

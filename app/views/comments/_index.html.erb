@@ -7,8 +7,8 @@
           <p><%= comment.content %></p>
           <% if comment.user == current_user %>
           <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
-          <%= link_to "コメント編集", edit_review_comment_path(review, comment), remote: true %>
-          <%= link_to "削除", review_comment_path(comment.review.id, comment.id), method: :delete, remote: true %>
+            <%= link_to "コメント編集", edit_review_comment_path(review, comment), remote: true %>
+            <%= link_to "削除", review_comment_path(comment.review.id, comment.id), method: :delete, remote: true %>
           <% end %>
         </div>
       <% end %>
