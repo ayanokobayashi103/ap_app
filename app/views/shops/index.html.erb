@@ -12,7 +12,7 @@
     <% end %>
   </div>
 </section>
-
+    <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true") %>
 <div class = "container">
   <% @shops.each do |shop| %><p>
     <div class = "row">
