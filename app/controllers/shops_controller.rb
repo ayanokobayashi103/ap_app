@@ -6,6 +6,13 @@ class ShopsController < ApplicationController
     # @shops = Shop.all
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true)
+    # 評価順で並べるばあい
+    if params[:sort_top_review]
+      @shops= Shop.all.each do |shop|
+        shop.average= shop.review_score_average
+      end
+      @shops=@shops.sort_by{ |shop| shop.average }.reverse
+    end
   end
 
   def new
