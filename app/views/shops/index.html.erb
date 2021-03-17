@@ -12,7 +12,8 @@
     <% end %>
   </div>
 </section>
-    <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true") %>
+  <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true") %>
+
 <div class = "container">
   <% @shops.each do |shop| %><p>
     <div class = "row">
@@ -33,10 +34,11 @@
       </div>
     </div>
   <% end %>
+  <div class = "paginate col-8 offset-2">
+    <%= paginate @shops %>
   </div>
+</div>
   <% if @shops.empty? %>
     <p>検索条件と一致する結果が見つかりません</p>
   <% end %>
 </div>
-
-<%= paginate @shops %>
