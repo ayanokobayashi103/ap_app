@@ -2,16 +2,18 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_action :owner?, only: [:new, :ceate, :edit, :update]
 
+
   def index
     # @shops = Shop.all
     @q = Shop.ransack(params[:q])
-    @shops = @q.result(distinct: true)
+    @shops = @q.result(distinct: true).page(params[:page]).per(5)
     # 評価順で並べるばあい
     if params[:sort_top_review]
       @shops= Shop.all.each do |shop|
         shop.average= shop.review_score_average
       end
-      @shops=@shops.sort_by{ |shop| shop.average }.reverse
+      @shops = @shops.sort_by{ |shop| shop.average }.reverse
+      @shops = Kaminari.paginate_array(@shops[0..9]).page(params[:page])
     end
   end
 
