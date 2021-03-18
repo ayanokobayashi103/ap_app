@@ -1,39 +1,43 @@
 <h2><%= link_to @shop.name, shop_path(@shop)%>のクチコミ一覧 </h2>
 <% if current_user %>
-  <%= link_to 'クチコミする', new_shop_review_path, class: 'btn btn-primary' %>
+<%= link_to 'クチコミする', new_shop_review_path, class: 'btn btn-primary' %>
 <% end %>
 <div class = "container">
   <% @shop.reviews.each do |review| %><p>
-    <div class = "card">
-      <p>投稿者:<%= review.user.name %></p>
-      <p><%= review.content %></p>
-
-      <div id="star-rate-<%= review.id %>"></div>
-       <script>
-         // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
-       $('#star-rate-<%= review.id %>').raty({
-         size: 36,
-         starOff:  '<%= asset_path('star-off.png') %>',
-         starOn : '<%= asset_path('star-on.png') %>',
-         starHalf: '<%= asset_path('star-half.png') %>',
-         half: true,
-         // 読み込みだけで入力できない
-         readOnly: true,
-         score: <%= review.rate %>,
-       });
-       </script>
-
-      <p>投稿時間:<%= l review.created_at, format: :long %></p>
-
-      <form >
-        <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
+    <div class = "row">
+      <div class = "review-post col-8 offset-2">
         <% if user_signed_in? %>
-          <% if current_user.id == review.user.id%>
-            <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
-            <%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' },class:"btn btn-outline-primary btn-sm" %>
-          <% end %>
+        <p>投稿者:<%= link_to review.user.name, user_path(review.user.id) %></p>
+        <% unless current_user.id == review.user.id %>
+        <%= render 'users/follow_form', user: review.user %>
         <% end %>
-      </form>
+        <% else %>
+        <p>投稿者: <%= review.user.name %></p>
+        <% end %>
+        <p><%= review.content%></p>
+        <!-- .truncate(50, separator: /\s/) もっとみるボタン実装後追加 -->
+
+        <div class="content review-score">
+          <div class="star-rating" style='margin-left: auto; margin-right: auto;'>
+            <div class="star-rating-front" style="width:<%= review.score_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div><br>
+          <div class="review-score-display">
+            評価：<%= review.score %>点
+          </div>
+        </div>
+
+        <p>投稿時間:<%= l review.created_at, format: :long %></p>
+        <form>
+          <% if user_signed_in? %>
+          <% if current_user.id == review.user.id%>
+          <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
+          <%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' },class:"btn btn-outline-primary btn-sm" %>
+          <% end %>
+          <% end %>
+          <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
+        </form>
+      </div>
     </div>
   <% end %>
 </div>

@@ -15,22 +15,14 @@
     <%= form.text_area :content, style:"width:500px; resize: none; height:200px;"%>
   </div>
 
-  <div class="field" id="star">
-    <%= form.label :rate, "星評価：" %>
-    <%= form.hidden_field :rate, id: :review_star %>
+  <div class="evaluation">
+    <!-- <%= form.label :star %> -->
+    <%= form.radio_button :score, 5, id:"star5"%><label for="star5">★</label>
+    <%= form.radio_button :score, 4, id:"star4"%><label for="star4">★</label>
+    <%= form.radio_button :score, 3, id:"star3"%><label for="star3">★</label>
+    <%= form.radio_button :score, 2, id:"star2"%><label for="star2">★</label>
+  <%= form.radio_button :score, 1, id:"star1"%><label for="star1">★</label>
   </div>
-
-  <script>
-    $('#star').raty({
-      size     : 36,
-      starOff: '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'review[rate]',
-      half: true,
-      score: '<%= @review.rate %>',
-    });
-  </script>
 
   <div class="actions">
     <%= form.submit "投稿する" %>

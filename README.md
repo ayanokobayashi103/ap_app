@@ -38,6 +38,7 @@
 - rspec
 - CarrierWave 
 - mini_magick
+- kaminari
 
 
 [カタログ設計](https://docs.google.com/spreadsheets/d/1m6Y85sIV91KAMsDBUDWzHYiUWefnIoDbAsQiu2pH5UM/edit?usp=sharing)

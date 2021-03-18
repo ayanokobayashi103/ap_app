@@ -1,5 +1,15 @@
 <div class='container-fluid' id='show-container'>
+  <p>
+    <%= image_tag default_img(@shop.image.url) %>
+  </p>
 <h1><%= "#{@shop.brand}" %></h1>
+<div class="star-rating" style='margin-left: auto; margin-right: auto;'>
+  <div class="star-rating-front" style="width:<%= @shop.review_score_percentage %>%">★★★★★</div>
+  <div class="star-rating-back">★★★★★</div>
+</div><br>
+<div class="review-score-display">
+  <p>評価:<%= @shop.review_score_average %>点</p>
+</div>
 <p>店舗名:　<%= @shop.name %></p>
 <p>住所: <%= @shop.address %></p>
 <p>営業時間:<%= @shop.start_dt%></p>

@@ -12,17 +12,32 @@
     <% end %>
   </div>
 </section>
+  <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true") %>
 
 <div class = "container">
   <% @shops.each do |shop| %><p>
-    <div class = "card">
-      <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
-      <p><%= shop.address %></p>
-      <p>営業時間:<%= shop.start_dt%></p>
-      <p>閉店時間:<%= shop.end_dt%></p>
+    <div class = "row">
+      <div class = "review-post col-8 offset-2">
+        <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
+        <p><%= shop.address %></p>
+        <p>営業時間:<%= shop.start_dt%></p>
+        <p>閉店時間:<%= shop.end_dt%></p>
+        <div class="content average-score">
+          <div class="star-rating" style='margin-left: auto; margin-right: auto;'>
+            <div class="star-rating-front" style="width:<%= shop.review_score_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+          </div>
+          <div class="average-score-display ml-3 pt-2">
+            <%= shop.review_score_average %>点
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
-
+  <div class = "paginate col-8 offset-2">
+    <%= paginate @shops %>
+  </div>
+</div>
   <% if @shops.empty? %>
     <p>検索条件と一致する結果が見つかりません</p>
   <% end %>

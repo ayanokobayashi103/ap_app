@@ -23,6 +23,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
   gem 'launchy'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -42,3 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'ransack'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'

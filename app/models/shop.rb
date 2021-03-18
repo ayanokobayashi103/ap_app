@@ -11,4 +11,28 @@ class Shop < ApplicationRecord
   belongs_to :owner
   has_many :reviews, dependent: :destroy
   has_many :review_users, through: :reviews, source: :user
+  mount_uploader :image, ImageUploader
+  has_many :blacklists, dependent: :destroy
+  has_many :blacklist_users, through: :blacklists, source: :user
+  attr_accessor :average
+
+  def review_score_percentage
+    if self.reviews
+      reviews.average(:score).to_f*100/5
+    else
+      0.0
+    end
+  end
+
+  def review_score_average
+    if self.reviews
+      reviews.average(:score).to_f.round(1)
+    else
+      0.0
+    end
+  end
+
+  def blacklist_user(user)
+    self.blacklists.find_by(user_id:user).present?
+  end
 end
