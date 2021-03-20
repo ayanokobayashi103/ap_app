@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
-before_action :registered_user?
+before_action :authenticate_owner!
 before_action :set_review, only: [:create, :edit, :update, :destroy]
 
   def create
     @shop = @review.shop
     @comment = @review.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment.owner_id = current_owner.id
     respond_to do |format|
       if @comment.save
         format.js {render :index}
@@ -46,11 +46,7 @@ before_action :set_review, only: [:create, :edit, :update, :destroy]
 
   private
   def comment_params
-    params.require(:comment).permit(:review_id,:content,:user_id)
-  end
-
-  def registered_user?
-    authenticate_user! || authenticate_owner!
+    params.require(:comment).permit(:review_id, :content, :owner_id)
   end
 
   def set_review

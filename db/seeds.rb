@@ -6,7 +6,6 @@
   User.create!(name: name,
                email: email,
                password: password,
-               id: "#{n + 1}",
                )
 end
 
@@ -24,13 +23,12 @@ end
                company: company,
                tel: tel,
                postcode: postcode,
-               id: "#{n + 1}"
                )
 end
 
 # Shop
 20.times do |n|
-  name = Faker::Book.title
+  name = Faker::Mountain.name
   brand = Faker::Beer.brand
   address = Faker::Address.full_address
   detail = Faker::JapaneseMedia::StudioGhibli.quote
@@ -40,10 +38,9 @@ end
                start_dt: "10:00",
                end_dt: "18:00",
                detail: detail,
-               owner_id: "#{n + 1}",
+               owner_id: Owner.find(n + 1).id,
                url: "",
                contact_detail: "05012345678",
-               id: "#{n + 1}"
                )
 end
 
@@ -51,17 +48,17 @@ end
 20.times do |n|
   content = Faker::Restaurant.review
   Review.create!(content: content,
-                shop_id: "#{n + 1}",
-                user_id: "#{n + 1}",
-                score: rand(5),
+                shop_id: Shop.find(n + 1).id,
+                user_id: User.find(n + 1).id,
+                score: rand(1..5),
                 )
 end
 
 10.times do |n|
   content = Faker::JapaneseMedia::StudioGhibli.quote
   Review.create!(content: content,
-                shop_id: "#{n + 1}",
-                user_id: "#{n + 2}",
+                shop_id: Shop.find(n + 1).id,
+                user_id: User.find(n + 2).id,
                 score: rand(1..5),
                 )
 end
