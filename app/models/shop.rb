@@ -14,6 +14,7 @@ class Shop < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :blacklists, dependent: :destroy
   has_many :blacklist_users, through: :blacklists, source: :user
+  attr_accessor :average
 
   def review_score_percentage
     if self.reviews
