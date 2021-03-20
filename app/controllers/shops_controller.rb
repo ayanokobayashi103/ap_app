@@ -2,9 +2,7 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   before_action :owner?, only: [:new, :ceate, :edit, :update]
 
-
   def index
-    # @shops = Shop.all
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true).page(params[:page]).per(5)
     # 評価順で並べるばあい
