@@ -3,6 +3,7 @@ class Review < ApplicationRecord
   validates :score, presence: true
   belongs_to :user
   belongs_to :shop
+  has_many :comments, dependent: :destroy
 
   def score_percentage
     if self.score

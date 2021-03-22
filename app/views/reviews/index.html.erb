@@ -30,12 +30,14 @@
         <p>投稿時間:<%= l review.created_at, format: :long %></p>
         <form>
           <% if user_signed_in? %>
-          <% if current_user.id == review.user.id%>
-          <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
-          <%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' },class:"btn btn-outline-primary btn-sm" %>
+            <% if current_user.id == review.user.id %>
+              <%= link_to '編集する', edit_shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm"%>
+              <%= link_to '削除する', shop_review_path(@shop.id,review.id), method: :delete, data: { confirm: '本当に編集していいですか？' },class:"btn btn-outline-primary btn-sm" %>
+            <% end %>
           <% end %>
+          <% if current_owner == @shop.owner || current_user == review.user %>
+            <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
           <% end %>
-          <%= link_to '詳細表示', shop_review_path(@shop.id,review.id),class:"btn btn-outline-primary btn-sm" %>
         </form>
       </div>
     </div>

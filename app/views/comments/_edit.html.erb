@@ -1,0 +1,10 @@
+<%= form_with(model: [review, comment]) do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: "comment_content_#{review.id}", style:"width:500px; resize: none; height:200px;" %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<br>

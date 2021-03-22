@@ -58,7 +58,7 @@ end
   content = Faker::JapaneseMedia::StudioGhibli.quote
   Review.create!(content: content,
                 shop_id: Shop.find(n + 1).id,
-                user_id: User.find(n + 1).id,
+                user_id: User.find(n + 2).id,
                 score: rand(1..5),
                 )
 end
