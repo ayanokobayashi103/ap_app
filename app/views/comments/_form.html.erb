@@ -10,8 +10,8 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label "店側からのメッセージを送る" %>
+    <%= form.text_area :content, style:"width:500px; resize: none; height:200px;" %>
   </div>
   <div class="actions">
     <%= form.submit %>
