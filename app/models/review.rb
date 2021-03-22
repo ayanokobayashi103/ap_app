@@ -6,8 +6,8 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def score_percentage
-    if self.score
-      score.to_i*100/5
+    if score
+      score.to_i * 100 / 5
     else
       0.0
     end

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-before_action :authenticate_owner!
-before_action :set_review, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_owner!
+  before_action :set_review, only: %i[create edit update destroy]
 
   def create
     @shop = @review.shop
@@ -8,9 +8,9 @@ before_action :set_review, only: [:create, :edit, :update, :destroy]
     @comment.owner_id = current_owner.id
     respond_to do |format|
       if @comment.save
-        format.js {render :index}
+        format.js { render :index }
       else
-        format.js {render :index}
+        format.js { render :index }
       end
     end
   end
@@ -45,6 +45,7 @@ before_action :set_review, only: [:create, :edit, :update, :destroy]
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:review_id, :content, :owner_id)
   end

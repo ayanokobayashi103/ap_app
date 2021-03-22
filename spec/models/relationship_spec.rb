@@ -12,12 +12,12 @@ describe 'relationshipモデル機能', type: :model do
       end
     end
 
-    describe "フォロー機能のテスト" do
-      it "followメソッドは、フォローしているユーザを返すこと" do
-        expect(active.follower). to eq user
+    describe 'フォロー機能のテスト' do
+      it 'followメソッドは、フォローしているユーザを返すこと' do
+        expect(active.follower).to eq user
       end
-      it "followerメソッドは、フォローされているユーザを返すこと" do
-        expect(active.followed). to eq user2
+      it 'followerメソッドは、フォローされているユーザを返すこと' do
+        expect(active.followed).to eq user2
       end
     end
   end

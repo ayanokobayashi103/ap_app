@@ -3,7 +3,7 @@ describe 'reviewpモデル機能', type: :model do
   before do
     @owner = FactoryBot.create(:owner)
     @user = FactoryBot.create(:user)
-    @shop = FactoryBot.create(:shop, owner:@owner)
+    @shop = FactoryBot.create(:shop, owner: @owner)
   end
 
   describe 'バリデーションのテスト' do
@@ -11,8 +11,8 @@ describe 'reviewpモデル機能', type: :model do
       it '内容が空の場合' do
         review = Review.new(
           content: '',
-          user:@user,
-          shop:@shop
+          user: @user,
+          shop: @shop
         )
         expect(review).not_to be_valid
       end
@@ -20,8 +20,8 @@ describe 'reviewpモデル機能', type: :model do
         review = Review.new(
           content: 'いいね',
           score: '',
-          user:@user,
-          shop:@shop
+          user: @user,
+          shop: @shop
         )
         expect(review).not_to be_valid
       end
@@ -29,8 +29,8 @@ describe 'reviewpモデル機能', type: :model do
         review = Review.new(
           content: 'good',
           score: 1,
-          user:@user,
-          shop:@shop
+          user: @user,
+          shop: @shop
         )
         expect(review).to be_valid
       end
