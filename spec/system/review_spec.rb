@@ -52,5 +52,45 @@ RSpec.describe 'Review', type: :system do
         expect(page).not_to have_content 'とてもいいね'
       end
     end
+    context 'クチコミの詳細ページへ遷移' do
+      it '投稿内容が表示される' do
+        visit shop_reviews_path(@shop)
+        click_on '詳細'
+        expect(page).to have_content 'good shop'
+      end
+    end
+  end
+
+    describe '新規作成機能' do
+      before do
+        @user = FactoryBot.create(:user)
+        @owner = FactoryBot.create(:owner)
+        @shop = FactoryBot.create(:shop, owner: @owner)
+        @review = FactoryBot.create(:review, shop: @shop, user: @user)
+        @comment = FactoryBot.create(:comment, owner: @owner, review: @review)
+        visit new_owner_session_path
+        fill_in 'owner[email]', with: 'owner@o.com'
+        fill_in 'owner[password]', with: 'ownerpass'
+        click_button 'ログイン'
+        visit shop_reviews_path(@shop)
+        click_on '詳細'
+      end
+    context 'クチコミに対してコメントできる' do
+      it 'コメント投稿できる' do
+        fill_in 'comment[content]', with: 'いいね'
+        click_on '登録する'
+        expect(page).to have_content 'いいね'
+      end
+      # it 'コメントを編集できる' do
+      #   click_on '編集'
+      #   fill_in "comment_content_#{@review}", with: 'いいね'
+      #   click_on '更新する'
+      #   expect(page).to have_content 'いいね'
+      # end
+      it 'コメント削除ができる' do
+        click_on '削除'
+        expect(page).not_to have_content 'MyText'
+      end
+    end
   end
 end
