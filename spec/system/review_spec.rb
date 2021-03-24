@@ -23,7 +23,7 @@ RSpec.describe 'Review', type: :system do
     end
   end
 
-  describe '新規作成機能' do
+  describe 'クチコミ機能' do
     before do
       @user = FactoryBot.create(:user)
       @owner = FactoryBot.create(:owner)
@@ -61,7 +61,7 @@ RSpec.describe 'Review', type: :system do
     end
   end
 
-    describe '新規作成機能' do
+    describe 'コメント機能' do
       before do
         @user = FactoryBot.create(:user)
         @owner = FactoryBot.create(:owner)
@@ -81,12 +81,6 @@ RSpec.describe 'Review', type: :system do
         click_on '登録する'
         expect(page).to have_content 'いいね'
       end
-      # it 'コメントを編集できる' do
-      #   click_on '編集'
-      #   fill_in "comment_content_#{@review}", with: 'いいね'
-      #   click_on '更新する'
-      #   expect(page).to have_content 'いいね'
-      # end
       it 'コメント削除ができる' do
         click_on '削除'
         expect(page).not_to have_content 'MyText'
