@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションのテスト' do
+    it 'コメントが空欄でない' do
+      comment = Comment.new( content: '' )
+      expect(comment).not_to be_valid
+    end
+  end
 end
