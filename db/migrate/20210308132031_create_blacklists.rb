@@ -6,6 +6,6 @@ class CreateBlacklists < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :blacklists, [:shop_id, :user_id], unique: true
+    add_index :blacklists, %i[shop_id user_id], unique: true
   end
 end

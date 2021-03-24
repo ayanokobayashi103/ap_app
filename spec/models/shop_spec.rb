@@ -10,12 +10,12 @@ describe 'shopモデル機能', type: :model do
         shop = Shop.new(
           name: '',
           brand: 'brand',
-          address:'Hawaii',
-          start_dt:'10:00',
-          end_dt:'17:00',
-          detail:'Hawaian shop',
-          contact_detail:'05012345678',
-          owner:@owner
+          address: 'Hawaii',
+          start_dt: '10:00',
+          end_dt: '17:00',
+          detail: 'Hawaian shop',
+          contact_detail: '05012345678',
+          owner: @owner
         )
         expect(shop).not_to be_valid
       end
@@ -25,12 +25,12 @@ describe 'shopモデル機能', type: :model do
         shop = Shop.new(
           name: 'name',
           brand: 'brand',
-          address:'',
-          start_dt:'10:00',
-          end_dt:'17:00',
-          detail:'Hawaian shop',
-          contact_detail:'05012345678',
-          owner:@owner
+          address: '',
+          start_dt: '10:00',
+          end_dt: '17:00',
+          detail: 'Hawaian shop',
+          contact_detail: '05012345678',
+          owner: @owner
         )
         expect(shop).not_to be_valid
       end
@@ -40,25 +40,25 @@ describe 'shopモデル機能', type: :model do
         shop = Shop.new(
           name: 'name',
           brand: 'brand',
-          address:'Hawaii',
-          start_dt:'10:00',
-          end_dt:'17:00',
-          detail:'Hawaian shop',
-          contact_detail:'05012345678',
-          owner:@owner
+          address: 'Hawaii',
+          start_dt: '10:00',
+          end_dt: '17:00',
+          detail: 'Hawaian shop',
+          contact_detail: '05012345678',
+          owner: @owner
         )
         expect(shop).to be_valid
       end
     end
     context '営業開始時間の入力方法が違う場合' do
       it 'バリデーションにひっかかる' do
-        shop = FactoryBot.build(:shop, owner:@owner, start_dt:'10:00' )
+        shop = FactoryBot.build(:shop, owner: @owner, start_dt: '10:00')
         expect(shop).to be_valid
       end
       it 'バリデーションを通る' do
-        shop = FactoryBot.build(:shop, owner:@owner, start_dt:'1000' )
+        shop = FactoryBot.build(:shop, owner: @owner, start_dt: '1000')
         shop.valid?
-        expect(shop.errors[:start_dt]).to include("は不正な値です")
+        expect(shop.errors[:start_dt]).to include('は不正な値です')
       end
     end
   end

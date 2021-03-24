@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :owners, controllers: {
-    sessions:      'owners/sessions',
-    passwords:     'owners/passwords',
+    sessions: 'owners/sessions',
+    passwords: 'owners/passwords',
     registrations: 'owners/registrations'
   }
   devise_for :users, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
   root 'shops#index'
@@ -26,10 +26,8 @@ Rails.application.routes.draw do
   end
 
   resources :owners
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i[create destroy]
   resources :blacklists
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

@@ -1,16 +1,16 @@
 class ShopsController < ApplicationController
-  before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :owner?, only: [:new, :ceate, :edit, :update]
+  before_action :set_shop, only: %i[show edit update destroy]
+  before_action :owner?, only: %i[new ceate edit update]
 
   def index
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true).page(params[:page]).per(5)
     # 評価順で並べるばあい
     if params[:sort_top_review]
-      @shops= Shop.all.each do |shop|
-        shop.average= shop.review_score_average
+      @shops = Shop.all.each do |shop|
+        shop.average = shop.review_score_average
       end
-      @shops = @shops.sort_by{ |shop| shop.average }.reverse
+      @shops = @shops.sort_by { |shop| shop.average }.reverse
       @shops = Kaminari.paginate_array(@shops[0..9]).page(params[:page])
     end
   end
@@ -29,15 +29,13 @@ class ShopsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @shop.update(shop_params)
-      redirect_to owner_path(@shop.owner_id), notice: "店舗の編集をしました"
+      redirect_to owner_path(@shop.owner_id), notice: '店舗の編集をしました'
     else
       render :edit
     end
@@ -49,8 +47,20 @@ class ShopsController < ApplicationController
   end
 
   private
+
   def shop_params
-    params.require(:shop).permit(:name, :brand, :address, :start_dt, :end_dt, :detail, :url, :contact_detail, :image, :image_cache)
+    params.require(:shop).permit(
+      :name,
+      :brand,
+      :address,
+      :start_dt,
+      :end_dt,
+      :detail,
+      :url,
+      :contact_detail,
+      :image,
+      :image_cache
+    )
   end
 
   def set_shop
@@ -58,8 +68,6 @@ class ShopsController < ApplicationController
   end
 
   def owner?
-    unless authenticate_owner!
-      redirect_to shops_path, notice: "エラー"
-    end
+    redirect_to shops_path, notice: 'エラー' unless authenticate_owner!
   end
 end

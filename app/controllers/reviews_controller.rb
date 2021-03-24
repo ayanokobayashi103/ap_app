@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :set_shop, only: [:show, :index, :destroy]
-  before_action :block_blacklist_user, only: [:new, :edit, :update, :create]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_review, only: %i[show edit update destroy]
+  before_action :set_shop, only: %i[show index destroy]
+  before_action :block_blacklist_user, only: %i[new edit update create]
 
   def index
     @reviews = Review.all
@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to shop_reviews_path, notice: "クチコミを編集しました！"
+      redirect_to shop_reviews_path, notice: 'クチコミを編集しました！'
     else
       render :edit
     end
@@ -43,10 +43,11 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to shop_reviews_path, notice: "クチコミを削除しました！"
+    redirect_to shop_reviews_path, notice: 'クチコミを削除しました！'
   end
 
   private
+
   def review_params
     params.require(:review).permit(:content, :score)
   end
@@ -60,8 +61,6 @@ class ReviewsController < ApplicationController
   end
 
   def block_blacklist_user
-    if set_shop.blacklist_user(current_user)
-      redirect_to shop_reviews_path, notice: 'こちらのショップには投稿できません！'
-    end
+    redirect_to shop_reviews_path, notice: 'こちらのショップには投稿できません！' if set_shop.blacklist_user(current_user)
   end
 end

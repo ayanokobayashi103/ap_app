@@ -7,10 +7,10 @@ RSpec.describe 'User', type: :system do
     context 'ユーザの新規登録ができること' do
       it 'noticeが表示される' do
         visit new_user_registration_path
-        fill_in 'user[name]', with:'name'
-        fill_in 'user[email]', with:'email@e.com'
-        fill_in 'user[password]', with:'password'
-        fill_in 'user[password_confirmation]', with:'password'
+        fill_in 'user[name]', with: 'name'
+        fill_in 'user[email]', with: 'email@e.com'
+        fill_in 'user[password]', with: 'password'
+        fill_in 'user[password_confirmation]', with: 'password'
         click_on 'アカウント登録'
         expect(page).to have_content 'アカウント登録が完了しました。'
       end
@@ -20,8 +20,8 @@ RSpec.describe 'User', type: :system do
   describe 'セッション機能のテスト' do
     before do
       visit new_user_session_path
-      fill_in 'user[email]', with:'user@u.com'
-      fill_in 'user[password]', with:'userpass1'
+      fill_in 'user[email]', with: 'user@u.com'
+      fill_in 'user[password]', with: 'userpass1'
       click_button 'ログイン'
     end
     context 'ログインができること' do
@@ -74,11 +74,11 @@ RSpec.describe 'User', type: :system do
     before do
       @owner = FactoryBot.create(:owner)
       @shop = FactoryBot.create(:shop, owner: @owner)
-      @review = FactoryBot.create(:review, shop: @shop, user:@user)
+      @review = FactoryBot.create(:review, shop: @shop, user: @user)
       @user2 = FactoryBot.create(:user2)
       visit new_user_session_path
-      fill_in 'user[email]', with:'user2@u.com'
-      fill_in 'user[password]', with:'userpass2'
+      fill_in 'user[email]', with: 'user2@u.com'
+      fill_in 'user[password]', with: 'userpass2'
       click_button 'ログイン'
     end
     context 'フォローができる' do
