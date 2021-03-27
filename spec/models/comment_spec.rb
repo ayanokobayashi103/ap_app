@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe Comment, type: :model do
   describe 'バリデーションのテスト' do
     it 'コメントが空欄でない' do
