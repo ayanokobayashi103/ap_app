@@ -1,18 +1,42 @@
-<h2><%= "#{@user.name}" %>さんのページ</h2>
-<% if current_user.id == @user.id %>
+<div class="container">
+<div class='header-contents'>
+  <h3><%= "#{@user.name}さん" %></h3>
+  <% if current_user.id == @user.id %>
   <p>メールアドレス: <%= @user.email %></p>
-<% else %>
+  <% else %>
   <%= render 'users/follow_form', user: @user %><br>
-<% end %>
+  <% end %>
+</div>
+<br>
 
-<%= link_to 'クチコミ投稿履歴をみる', review_users_path(id: @user.id), class:"btn btn-primary" %>
+  <div class='boxContainer'>
+    <div class='box col-md-4'>
+      <p><%= link_to 'クチコミ投稿履歴', review_users_path(id: @user.id) %></p>
+      <%= @user.reviews.count %>
+    </div>
+    <!-- <% if current_user.id == @user.id %> -->
+    <div class='box col-md-4'>
+      <p>フォロワー</p>
+      <%= @user.followers.count %>
+      <!-- <% @followers.each do |followers|%>
+      <p>Name: <%= link_to followers.name, user_path(id: followers.id) %></p>
+      <% end %> -->
+    </div>
+    <div class='box col-md-4'>
+      <p>フォロー</p>
+      <%= @user.following.count %>
+      <!-- <% @following.each do |following|%>
+      <p>Name: <%= link_to following.name, user_path(id: following.id) %></p>
+      <% end %>
+      <% end %> -->
+    </div>
+  </div>
 
-<% if current_user.id == @user.id %>
-<p><div class="container">
+  <!-- <% if current_user.id == @user.id %>
   <div class="row">
     <div class="col-md-6" >
       <div class="card">
-        <h4>フォロー中</h4>
+        <h5>フォロー中</h5>
         <% @following.each do |following|%>
         <p>Name: <%= link_to following.name, user_path(id: following.id) %></p>
         <% end %>
@@ -20,12 +44,12 @@
     </div>
     <div class="col-md-6" >
       <div class="card">
-        <h4>フォロワー</h4>
+        <h5>フォロワー</h5>
         <% @followers.each do |followers|%>
         <p>Name: <%= link_to followers.name, user_path(id: followers.id) %></p>
         <% end %>
         <% end %>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
