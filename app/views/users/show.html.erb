@@ -8,7 +8,7 @@
   <% end %>
 </div>
 <br>
-
+<%= link_to '編集', edit_user_registration_path(@user)%>
   <div class='boxContainer'>
     <div class='box col-md-4'>
       <p><%= link_to 'クチコミ投稿履歴', review_users_path(id: @user.id) %></p>
