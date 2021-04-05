@@ -2,9 +2,9 @@
   <h2>詳細画面</h2>
   <% if owner_signed_in? && current_owner.id == @shop.owner.id %>
     <% if @shop.blacklist_user(@review.user) %>
-      <%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete,  data: { confirm: "#{@review.user.name}さんをブラックリストから解除しますか？" }, class:"button_blacklist"%>
+      <%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete,  data: { confirm: "#{@review.user.name}さんをブラックリストから解除しますか？" }, class:"btn btn-dark"%>
     <% else %>
-      <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review), method: :post, data: { confirm: "#{@review.user.name}さんをブラックリストに入れますか？" }, class:"button_unblacklist" %>
+      <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review), method: :post, data: { confirm: "#{@review.user.name}さんをブラックリストに入れますか？" }, class:"btn btn-outline-dark" %>
     <% end %>
   <% end %>
 
@@ -25,7 +25,7 @@
 
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, review: @review } %>
-  </div>
+  </div></br>
 
   <%= link_to 'クチコミ一覧へ', shop_reviews_path %>
 </div>

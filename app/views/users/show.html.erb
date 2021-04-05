@@ -3,6 +3,7 @@
   <h3><%= "#{@user.name}さん" %></h3>
   <% if current_user.id == @user.id %>
   <p>メールアドレス: <%= @user.email %></p>
+  <%= link_to '登録内容の編集', edit_user_registration_path(@user), class:"btn btn-outline-dark"%>
   <% else %>
   <%= render 'users/follow_form', user: @user %><br>
   <% end %>
