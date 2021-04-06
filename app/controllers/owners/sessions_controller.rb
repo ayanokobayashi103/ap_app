@@ -3,6 +3,12 @@
 class Owners::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  def guest_sign_in
+    owner = Owner.guest_owner
+    sign_in owner
+    redirect_to root_path, notice: 'ゲストオーナーとしてログインしました。'
+  end
+
   # GET /resource/sign_in
   # def new
   #   super

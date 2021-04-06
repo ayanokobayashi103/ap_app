@@ -11,4 +11,18 @@ class Owner < ApplicationRecord
   validates :postcode, presence: true, format: { with: VALID_POSTCODE_REGEX }
   has_many :shops, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  def self.guest_owner
+    find_or_create_by!(
+      email: 'guest@example.com',
+      name: 'ゲストユーザー',
+      company: 'guest.co',
+      postcode: '1234567',
+      tel: '1234567890',
+      ) do |owner|
+    # ランダムで URL-safe な base64 文字列を生成して返します。
+    owner.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 end
