@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   }
   root 'shops#index'
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
+  devise_scope :owner do
+    post 'owners/guest_sign_in', to: 'owners/sessions#guest_sign_in'
+  end
+
   resources :users, only: [:show] do
     collection do
       get 'review'

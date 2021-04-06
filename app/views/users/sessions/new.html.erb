@@ -1,5 +1,6 @@
 <%= render "shared/session"%>
 
-<%= link_to '店主ログインはこちら', new_owner_session_path %>
+<%= link_to '店主ログインはこちら', new_owner_session_path, class:"btn btn-outline-secondary" %></br></br>
 
+<%= link_to 'ゲストログイン（ユーザー閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-warning" %>
 <!-- <%= render "users/shared/links" %> -->

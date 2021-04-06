@@ -20,4 +20,11 @@ class User < ApplicationRecord
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
+    # ランダムで URL-safe な base64 文字列を生成して返します。
+    user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
