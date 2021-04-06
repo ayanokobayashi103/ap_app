@@ -22,6 +22,5 @@ class Owner < ApplicationRecord
       ) do |owner|
         owner.password = SecureRandom.urlsafe_base64
       end
-    end
-
+  end
 end
