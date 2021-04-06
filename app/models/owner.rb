@@ -20,9 +20,8 @@ class Owner < ApplicationRecord
       postcode: '1234567',
       tel: '1234567890',
       ) do |owner|
-    # ランダムで URL-safe な base64 文字列を生成して返します。
-    owner.password = SecureRandom.urlsafe_base64
+        owner.password = SecureRandom.urlsafe_base64
+      end
     end
-  end
 
 end

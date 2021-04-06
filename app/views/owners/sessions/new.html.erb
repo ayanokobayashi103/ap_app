@@ -1,8 +1,11 @@
-<br><h5 style="font-family: 'HiraKakuPro-W6';">※店主専用</h5>
+<br><h4 style="font-family: 'HiraKakuPro-W6';">※店主専用</h4>
 
 <%= render "shared/session"%>
 
-<%= link_to '一般ログインに戻る', new_user_session_path %><br>
-<%= link_to '店主新規登録はこちら', new_owner_registration_path %></br></br>
-<%= link_to 'ゲストログイン（店主閲覧用）', owners_guest_sign_in_path, method: :post %></br>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+<%= link_to '一般ログインに戻る', new_user_session_path, class:"btn btn-outline-secondary" %>
+<%= link_to '店主新規登録はこちら', new_owner_registration_path, class:"btn btn-outline-secondary" %>
+
+</div></br></br>
+<%= link_to 'ゲストログイン（店主閲覧用）', owners_guest_sign_in_path, method: :post, class:"btn btn-warning" %>
 <!-- <%= render "owners/shared/links" %> -->

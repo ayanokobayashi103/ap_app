@@ -6,7 +6,7 @@ class Owners::SessionsController < Devise::SessionsController
   def guest_sign_in
     owner = Owner.guest_owner
     sign_in owner
-    redirect_to root_path, notice: 'ゲストオーナーとしてログインしました。'
+    redirect_to root_path, notice: 'ゲスト店主としてログインしました。'
   end
 
   # GET /resource/sign_in
