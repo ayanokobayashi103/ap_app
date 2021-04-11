@@ -158,7 +158,7 @@ label.required:after {
 .box{
   float: left;
   background: white;
-   border: solid 1px #e3dede;
+  border: solid 1px #e3dede;
 }
 .boxContainer{
   overflow: hidden;
@@ -168,4 +168,10 @@ background-image: linear-gradient(to top, #e14fad 0%, #f9d423 100%);
 padding:15px;
 height: 200px;
 margin-top: 15px;
+}
+
+footer {
+  height:200px;
+  background: #ccc;
+  color: white;
 }
