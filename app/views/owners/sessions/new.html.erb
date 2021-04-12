@@ -2,10 +2,7 @@
 
 <%= render "shared/session"%>
 
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-<%= link_to '一般ログインに戻る', new_user_session_path, class:"btn btn-outline-secondary" %>
-<%= link_to '店主新規登録はこちら', new_owner_registration_path, class:"btn btn-outline-secondary" %>
-</div></br></br>
+一般<%= link_to 'ログインに戻る', new_user_session_path %><br>
+店主新規登録は<%= link_to 'こちら', new_owner_registration_path %>
 
-<%= link_to 'ゲストログイン（店主閲覧用）', owners_guest_sign_in_path, method: :post, class:"btn btn-warning" %>
 <!-- <%= render "owners/shared/links" %> -->

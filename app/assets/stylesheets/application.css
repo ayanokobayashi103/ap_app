@@ -101,6 +101,7 @@
    background-color: white;
    box-shadow: 2px 2px 4px #a3a1a1;
 }
+
  /* notice */
 .alart {
   background: red;
@@ -121,6 +122,7 @@ label.required:after {
   background-color: #C44;
   content: "必須";
 }
+
 /* star */
  .evaluation{
    display: flex;
@@ -151,21 +153,34 @@ label.required:after {
  .evaluation input[type='radio']:checked ~ label{
    color: #ffcc00;
  }
+
+ /* kaminari */
 .paginate {
   justify-content: center;
 }
 
-.box{
-  float: left;
-  background: white;
-   border: solid 1px #e3dede;
+/* user show */
+.header-contents {
+  background-image: linear-gradient(to top, #e14fad 0%, #f9d423 100%);
+  padding:15px;
+  height: 200px;
+  margin-top: 15px;
 }
 .boxContainer{
   overflow: hidden;
 }
-.header-contents {
-background-image: linear-gradient(to top, #e14fad 0%, #f9d423 100%);
-padding:15px;
-height: 200px;
-margin-top: 15px;
+.box{
+  float: left;
+  background: white;
+  border: solid 1px #e3dede;
+}
+
+/* footer */
+footer {
+  height: 170px;
+  background: black;
+  color: white;
+}
+.copylight {
+  padding-top: 40px;
 }
