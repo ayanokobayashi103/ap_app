@@ -1,12 +1,22 @@
 <div class='container' id='show-container'>
   <h2>詳細画面</h2>
+  <div class="blacklist-button">
+    <table>
+<tr>
+<td>
   <% if owner_signed_in? && current_owner.id == @shop.owner.id %>
     <% if @shop.blacklist_user(@review.user) %>
-      <%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete,  data: { confirm: "#{@review.user.name}さんをブラックリストから解除しますか？" }, class:"btn btn-dark"%>
+      <%= button_to "#{@review.user.name}さんをブラックリストから解除", blacklist_path(id:@review), method: :delete,  data: { confirm: "#{@review.user.name}さんをブラックリストから解除しますか？" }, class:"btn btn-dark"%></td>
     <% else %>
-      <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review), method: :post, data: { confirm: "#{@review.user.name}さんをブラックリストに入れますか？" }, class:"btn btn-outline-dark" %>
+    <td>  <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review), method: :post, data: { confirm: "#{@review.user.name}さんをブラックリストに入れますか？" }, class:"btn btn-outline-dark" %></td>
     <% end %>
   <% end %>
+  <td><input class="hatena_button" type="button" name="" value="？">
+  <span class="help_message"></span>
+</td>
+</tr>
+</table>
+  </div>
 
   <% if user_signed_in? %>
     投稿者: <%= link_to @review.user.name, user_path(@review.user.id) %>
@@ -29,3 +39,13 @@
 
   <%= link_to 'クチコミ一覧へ', shop_reviews_path %>
 </div>
+
+<script>
+$('.hatena_button').on('click', function(){
+    if($('.help_message').text() === ""){
+      $('.help_message').text("ブラックリストに入れたユーザーはこの店に対してクチコミができなくなります").fadeIn(500).css('display', 'inline');
+    } else {
+      $('.help_message').text("").css('display', 'none');
+    }
+  })
+</script>

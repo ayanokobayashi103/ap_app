@@ -21,3 +21,34 @@
   padding:5px;
   margin-top:5px;
 }
+/* hatena button */
+.blacklist-button {
+  display: inline-block;
+}
+.hatena_button {
+  border-radius: 100%;
+  margin-left: 20px;
+}
+.help_message {
+    margin-left: 10px;
+    width: 10%;
+    display: none;
+    position: absolute;
+    word-wrap: break-word;
+    margin-top: -2.5em;
+    border: 1px solid #aaaaaa;
+    padding: 4px;
+    font-size: 0.5em;
+  }
+  .help_message:after {
+    border:10px solid transparent;
+    border-right-color:#aaaaaa;
+    border-left-width:0;
+    width:0;
+    left:-10px;
+    content:"";
+    display:block;
+    top:20px;
+    position:absolute;
+    margin-top: 1em;
+  }
