@@ -171,7 +171,11 @@ margin-top: 15px;
 }
 
 footer {
-  height:200px;
-  background: #ccc;
+  height: 170px;
+  background: black;
   color: white;
+}
+.copylight {
+
+  padding-top: 40px;
 }
