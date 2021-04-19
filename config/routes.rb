@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   resources :shops do
-    resources :reviews
+    resources :reviews, shallow: true
   end
 
   resources :reviews do
@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   resources :owners
   resources :relationships, only: %i[create destroy]
   resources :blacklists
+
+  get :review_poricy, to: 'guides#review_poricy'
+  get :guideline, to: 'guidse#guideline'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

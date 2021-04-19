@@ -12,14 +12,15 @@
   </div>
 </section>
 
-<div class = "container-fluid">
+<div class = "container">
+<!-- <div class = "container-fluid">
   <div class = "row">
     <div class = "col-md-2">
       <aside class="side-menu">
-        <nav>
+        <nav> -->
           <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true") %><br>
 
-          <div class="btn-group">
+          <!-- <div class="btn-group">
             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               並べ替え
             </button>
@@ -32,9 +33,9 @@
           </div>
         </nav>
       </aside>
-    </div>
+    </div> -->
 
-    <div class = "col-md-10">
+    <!-- <div class = "col-md-10"> -->
       <% if @shops.empty? %>
       <br>
         <p>検索条件と一致する結果が見つかりません</p>
@@ -65,17 +66,18 @@
       </div>
 
     </div>
-
+<!--
   </div>
 
-</div>
+</div> -->
 
 <footer class="footer">
   <div class="footermenubox clearfix">
     <ul class="footermenust">
-      <li><%= link_to 'お問い合わせ'%></li>
+      <!-- review_poricy_path -->
+      <li><%= link_to 'アパログの使い方'%></li>
       <li>クチコミガイドライン</li>
-      <li>アパログの使い方</li>
+      <li>お問い合わせ</li>
     </ul>
   </div>
   <div class="footer-logo">
