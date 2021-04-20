@@ -1,49 +1,93 @@
+<!-- 検索body -->
 <section id= "top" class="shop-index-top">
-
-<h4 id="find-shop-sub">アパレル店のクチコミができるアプリ</h4>
-<h1 id="find-shop">APPALOG</h1>
+  <h4 id="find-shop-sub">アパレル店のクチコミができるアプリ</h4>
+  <h1 id="find-shop">APPALOG</h1>
 
   <div class = "container" >
     <%= search_form_for @q do |f| %>
-      <%= f.search_field :name_or_brand_or_address_cont, class: "form-control", placeholder: "店舗名 ブランド 住所検索", id:"search-box" %>
-      <%= button_tag type: 'submit',class: "btn btn-danger" do %>
-        <i class="fas fa-search"></i> 検索
-      <% end %>
+    <%= f.search_field :name_or_brand_or_address_cont, class: "form-control", placeholder: "店舗名 ブランド 住所検索", id:"search-box" %>
+    <%= button_tag type: 'submit',class: "btn btn-danger" do %>
+    <i class="fas fa-search"></i> 検索
+    <% end %>
     <% end %>
   </div>
 </section>
-  <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true") %>
 
+<!-- body -->
 <div class = "container">
-  <% @shops.each do |shop| %><p>
+  <div class = "container-fluid">
     <div class = "row">
-      <div class = "review-post col-8 offset-2">
-        <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
-        <p><%= shop.address %></p>
-        <p>営業時間:<%= shop.start_dt%></p>
-        <p>閉店時間:<%= shop.end_dt%></p>
-        <div class="content average-score">
-          <div class="star-rating" style='margin-left: auto; margin-right: auto;'>
-            <div class="star-rating-front" style="width:<%= shop.review_score_percentage %>%">★★★★★</div>
-            <div class="star-rating-back">★★★★★</div>
-          </div>
-          <div class="average-score-display ml-3 pt-2">
-            <%= shop.review_score_average %>点
-          </div>
-        </div>
+      <!-- サイドバー -->
+      <div class = "col-md-2">
+        <aside class="side-menu">
+          <nav>
+            <br>
+            <!-- <%= link_to "クチコミ評価が良い店Top10", shops_path(sort_top_review: "true"), class:"btn btn-outline-primary" %><br> -->
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                並べ替え
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item"><%= link_to "星評価の高い店Top10", shops_path(sort_top_review: "true") %></a>
+                <!-- <a class="dropdown-item" href="#">クチコミ数の少ない順</a> -->
+                <a class="dropdown-item"><%= link_to "クチコミ数が多い順", shops_path(review_number: "true") %></a>
+              </div>
+            </div>
+          </nav>
+        </aside>
       </div>
+      
+      <!-- shops情報 -->
+      <div class = "col-md-10">
+        <% if @shops.empty? %>
+        <br>
+        <p>検索条件と一致する結果が見つかりません</p>
+        <% end %>
+        <% @shops.each do |shop| %><p>
+          <div class = "row">
+            <div class = "review-post col-md-12">
+              <p>店舗名:<%= link_to shop.name, shop_path(shop.id) %></p>
+              <p><%= shop.address %></p>
+              <p>営業時間:<%= shop.start_dt%></p>
+              <p>閉店時間:<%= shop.end_dt%></p>
+              <div class="content average-score">
+                <div class="star-rating" style='margin-left: auto; margin-right: auto;'>
+                  <div class="star-rating-front" style="width:<%= shop.review_score_percentage %>%">★★★★★</div>
+                  <div class="star-rating-back">★★★★★</div>
+                </div>
+                <div class="average-score-display ml-3 pt-2">
+                  <%= shop.review_score_average %>点
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <!-- kaminari -->
+          <div class = "paginate col-8 offset-2">
+            <%= paginate @shops %>
+          </div>
+          <!-- shos情報閉じタグ -->
+        </div>
+        <!-- row閉じタグ -->
+      </div>
+      <!-- container_f閉じタグ -->
     </div>
-  <% end %>
-  <div class = "paginate col-8 offset-2">
-    <%= paginate @shops %>
+    <!-- container閉じタグ -->
   </div>
-</div>
-  <% if @shops.empty? %>
-    <p>検索条件と一致する結果が見つかりません</p>
-  <% end %>
-</div>
-<footer>
-  <div class="copylight">
-    <p>© 2021 APPALOG</p>
-  </div>
-</footer>
+
+  <footer class="footer">
+    <div class="footermenubox clearfix">
+      <ul class="footermenust">
+        <!-- <%= link_to 'アパログの使い方', review_poricy_path%>< -->
+        <li>アパログの使い方</li>
+        <li>クチコミガイドライン</li>
+        <li>お問い合わせ</li>
+      </ul>
+    </div>
+    <div class="footer-logo">
+      <p>APPALOG</p>
+    </div>
+    <div class="copylight">
+      <p>© 2021 APPALOG</p>
+    </div>
+  </footer>
