@@ -30,13 +30,13 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item"><%= link_to "星評価の高い店Top10", shops_path(sort_top_review: "true") %></a>
                 <!-- <a class="dropdown-item" href="#">クチコミ数の少ない順</a> -->
-                <a class="dropdown-item"><%= link_to "クチコミ数が多い順", shops_path(review_number: "true") %></a>
+                <a class="dropdown-item"><%= link_to "クチコミ数が多い順", shops_path(review_count: "true") %></a>
               </div>
             </div>
           </nav>
         </aside>
       </div>
-      
+
       <!-- shops情報 -->
       <div class = "col-md-10">
         <% if @shops.empty? %>
