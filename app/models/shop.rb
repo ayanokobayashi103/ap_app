@@ -15,6 +15,7 @@ class Shop < ApplicationRecord
   has_many :blacklists, dependent: :destroy
   has_many :blacklist_users, through: :blacklists, source: :user
   attr_accessor :average
+  attr_accessor :review_count
 
   def review_score_percentage
     if reviews
