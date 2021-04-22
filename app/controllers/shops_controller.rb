@@ -13,7 +13,7 @@ class ShopsController < ApplicationController
       @shops = @shops.sort_by { |shop| shop.average }.reverse
       @shops = Kaminari.paginate_array(@shops[0..9]).page(params[:page])
     # クチコミ数の多い順
-    elsif params[:review_number]
+  elsif params[:review_count]
       @shops = Shop.all.each do |shop|
         shop.review_count = shop.reviews.count
       end
