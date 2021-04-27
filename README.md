@@ -28,15 +28,17 @@
 * コメント機能
     - [x] 店主が自店舗のクチコミに対して返信メッセージを送ることができる
 * ブラックリスト機能
-
     - [x] 店主が悪質ユーザーの投稿を制限できる
+* 並べ替え機能
+    - [x] 星評価の高い順
+    - [x] クチコミ数の多い順 
 
+### URL
+https://pure-meadow-89852.herokuapp.com/  
+※簡単ログイン機能：ゲストログイン機能（店主側とユーザー側で分かれております）を実装しております、  
+そちらをご利用いただけると幸いです。
 
-### デプロイ先
-[Heroku](https://pure-meadow-89852.herokuapp.com/)
-
-
-### 使用予定Gem
+### 使用Gem
 - device
 - ransack
 - rspec
@@ -44,11 +46,15 @@
 - mini_magick
 - kaminari
 
+### 要件定義
+#### カタログ設計
+https://docs.google.com/spreadsheets/d/1m6Y85sIV91KAMsDBUDWzHYiUWefnIoDbAsQiu2pH5UM/edit?usp=sharing
 
-[カタログ設計](https://docs.google.com/spreadsheets/d/1m6Y85sIV91KAMsDBUDWzHYiUWefnIoDbAsQiu2pH5UM/edit?usp=sharing)
+#### テーブル定義
+https://docs.google.com/spreadsheets/d/1f4UbZ2V5TXXjc1OA1tuqDTseqqIlOhAbg9Qdbz257YQ/edit?usp=sharing
 
-[テーブル定義](https://docs.google.com/spreadsheets/d/1f4UbZ2V5TXXjc1OA1tuqDTseqqIlOhAbg9Qdbz257YQ/edit?usp=sharing)
+#### 画面遷移図
+https://docs.google.com/spreadsheets/d/1col-qSIgZlmYk7GGJOUVt_pqwbdtA3zd7wyMzstyk-4/edit?usp=sharing
 
-[画面遷移図](https://docs.google.com/spreadsheets/d/1col-qSIgZlmYk7GGJOUVt_pqwbdtA3zd7wyMzstyk-4/edit?usp=sharing)
-
-[ワイヤーフレーム](https://docs.google.com/spreadsheets/d/1sdzKW4l3MiczHkWrIbGB8qriUMmD8gCsSdL9RFc4pwk/edit?usp=sharing)
+#### ワイヤーフレーム
+https://docs.google.com/spreadsheets/d/1sdzKW4l3MiczHkWrIbGB8qriUMmD8gCsSdL9RFc4pwk/edit?usp=sharing
