@@ -3,7 +3,6 @@
   width: 5em;
   height: 1em;
   font-size: 25px;
-
 }
 .star-rating-front {
   position: absolute;
@@ -16,16 +15,16 @@
 .star-rating-back {
   color: #ccc;
 }
+
 /* commnet */
 .border {
   padding:5px;
   margin-top:5px;
 }
-/* hatena button */
 .blacklist-button {
   display: inline-block;
 }
-.hatena_button {
+/* .hatena_button {
   border-radius: 100%;
   margin-left: 20px;
 }
@@ -51,4 +50,12 @@
     top:20px;
     position:absolute;
     margin-top: 1em;
+  } */
+
+  /* blacklist tooltip */
+  #tooltip-branck {
+    border-radius: 100%;
+    font-family: 'Font Awesome 5 Free';
+    padding: 2px 8px;
+    margin: 4px;
   }

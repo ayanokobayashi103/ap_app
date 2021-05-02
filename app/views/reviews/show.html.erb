@@ -10,8 +10,13 @@
           <% else %>
             <td>  <%= button_to "#{@review.user.name}さんをブラックリストに入れる", blacklists_path(id:@review), method: :post, data: { confirm: "#{@review.user.name}さんをブラックリストに入れますか？" }, class:"btn btn-outline-dark" %></td>
           <% end %>
-          <td><input class="hatena_button" type="button" name="" value="？">
+          <!-- <td><input class="hatena_button" type="button" name="" value="？">
             <span class="help_message"></span>
+          </td> -->
+          <td>
+            <button type="button" class="btn btn-info" id="tooltip-branck" data-toggle="tooltip" data-placement="right" title="ブラックリストに入れたユーザーはこの店に対してクチコミができなくなります">
+              ?
+            </button>
           </td>
         <% end %>
       </tr>
@@ -40,11 +45,15 @@
 </div>
 
 <script>
-$('.hatena_button').on('click', function(){
+  $('.hatena_button').on('click', function(){
     if($('.help_message').text() === ""){
       $('.help_message').text("ブラックリストに入れたユーザーはこの店に対してクチコミができなくなります").fadeIn(500).css('display', 'inline');
     } else {
       $('.help_message').text("").css('display', 'none');
     }
+  })
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
   })
 </script>
