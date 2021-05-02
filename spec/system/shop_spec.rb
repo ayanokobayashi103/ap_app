@@ -72,8 +72,9 @@ RSpec.describe 'Shop', type: :system do
         click_on '並べ替え'
         click_on '星評価の高い店Top10'
         top = all('.review-post')
-        sleep(2)
+        sleep(1)
         expect(top[0]).to have_content 'shop2'
+        sleep(1)
         expect(top[1]).to have_content 'shop1'
       end
     end
