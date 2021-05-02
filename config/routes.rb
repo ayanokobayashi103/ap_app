@@ -1,27 +1,31 @@
 Rails.application.routes.draw do
-  devise_for :owners, controllers: {
-    sessions: 'owners/sessions',
-    passwords: 'owners/passwords',
-    registrations: 'owners/registrations'
-  }
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations'
-  }
   root 'shops#index'
 
-  devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  controller :owners do
+    devise_for :owners, controllers: {
+      sessions: 'owners/sessions',
+      passwords: 'owners/passwords',
+      registrations: 'owners/registrations'
+    }
+    devise_scope :owner do
+      post 'owners/guest_sign_in', to: 'owners/sessions#guest_sign_in'
+    end
+    resources :owners
   end
 
-  devise_scope :owner do
-    post 'owners/guest_sign_in', to: 'owners/sessions#guest_sign_in'
-  end
-
-  resources :users, only: [:show] do
-    collection do
-      get 'review'
+  controller :users do
+    devise_for :users, controllers: {
+      sessions: 'users/sessions',
+      passwords: 'users/passwords',
+      registrations: 'users/registrations'
+    }
+    devise_scope :user do
+      post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    end
+    resources :users, only: [:show] do
+      collection do
+        get 'review'
+      end
     end
   end
 
@@ -33,12 +37,13 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :owners
   resources :relationships, only: %i[create destroy]
   resources :blacklists
 
-  get :review_poricy, to: 'guides#review_poricy'
-  get :guideline, to: 'guidse#guideline'
-
+  controller :guides do
+    get :review_poricy, to: 'guides#review_poricy'
+    get :guideline, to: 'guidse#guideline'
+  end
+  
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

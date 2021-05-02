@@ -66,14 +66,27 @@ RSpec.describe 'Shop', type: :system do
         expect(page).to have_content '検索条件と一致する結果が見つかりません'
       end
     end
-    context 'クチコミランキングでソート' do
-      it 'クチコミ評価の一番良い店が一番上に表示' do
+    context 'クチコミでソート' do
+      it '星評価の一番良い店が一番上に表示' do
         visit root_path
-        click_on 'クチコミ評価が良い店Top10'
+        click_on '並べ替え'
+        click_on '星評価の高い店Top10'
         top = all('.review-post')
         sleep(1)
         expect(top[0]).to have_content 'shop2'
-        expect(top[1]).to have_content 'shop'
+        sleep(1)
+        expect(top[1]).to have_content 'shop1'
+      end
+    end
+    context 'クチコミでソート' do
+      it 'クチコミ数の一番良い店が一番上に表示' do
+        visit root_path
+        click_on '並べ替え'
+        click_on 'クチコミ数が多い順'
+        top = all('.review-post')
+        sleep(1)
+        expect(top[0]).to have_content 'shop1'
+        expect(top[1]).to have_content 'shop2'
       end
     end
   end
