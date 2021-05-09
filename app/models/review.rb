@@ -5,6 +5,7 @@ class Review < ApplicationRecord
   belongs_to :shop
   has_many :comments, dependent: :destroy
 
+  # クチコミの星ゲージのパーセンテージ表示する
   def score_percentage
     if score
       score.to_i * 100 / 5
