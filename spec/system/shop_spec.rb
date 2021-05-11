@@ -71,10 +71,9 @@ RSpec.describe 'Shop', type: :system do
         visit root_path
         click_on '並べ替え'
         click_on '星評価の高い店Top10'
+        sleep(1)
         top = all('.review-post')
-        sleep(1)
         expect(top[0]).to have_content 'shop2'
-        sleep(1)
         expect(top[1]).to have_content 'shop1'
       end
     end
@@ -83,8 +82,8 @@ RSpec.describe 'Shop', type: :system do
         visit root_path
         click_on '並べ替え'
         click_on 'クチコミ数が多い順'
-        top = all('.review-post')
         sleep(1)
+        top = all('.review-post')
         expect(top[0]).to have_content 'shop1'
         expect(top[1]).to have_content 'shop2'
       end
